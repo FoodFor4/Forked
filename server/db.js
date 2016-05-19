@@ -30,7 +30,6 @@ knex.ensureSchema = function () {
           table.string('name');
           table.string('address');
           table.string('phone');
-          table.string('price');
           table.string('photo_url');
         }).then(function (table) {
           console.log("created restaurants table")
@@ -47,6 +46,22 @@ knex.ensureSchema = function () {
           table.string('category');
         }).then(function (table) {
           console.log("created buckets table")
+        })
+      }
+    }),
+
+    knex.schema.hasTable('reviews').then(function (exists) {
+      if(!exists) {
+        knex.schema.createTable('reviews', function(table) {
+          table.increments();
+          table.foreign('user_id').references('users');
+          table.foreign('rest_id').references('restaurants');
+          table.integer('rating');
+          table.string('review');
+          table.string('price');
+          table.string('category');
+        }).then(function (table) {
+          console.log("created reviews table")
         })
       }
     })
