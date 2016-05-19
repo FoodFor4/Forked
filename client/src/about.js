@@ -1,7 +1,5 @@
 'use strict';
 
-angular.module('myApp')
-  .controller('AboutCtrl', ['$scope', function($scope) {
+  module.exports = function($scope,$http) {
     $scope.header = 'I am ready to be built!';	
-  }]);
-
+  };

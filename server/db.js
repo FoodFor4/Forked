@@ -16,7 +16,7 @@ exports.schema.createTable('restaurants', function(table) {
   table.string('name');
   table.string('address');
   table.string('phone');
-  table.string('price');
+  table.string('pric'e);
   table.string('address');
   table.string('photo_url');
 });
