@@ -2,6 +2,24 @@ angular.module('myApp.services', [])
 
   .factory('List', function ($http) {
 
+    // grabs existing user bucket list
+    var getUserRestaurantList = function() {
+      return $http({
+        method: 'GET',
+        url: // tbd
+      })
+    };
+
+    // add additional restaurant to user bucket list
+    // input should be an object:
+    // {
+    //   name: name,
+    //   category: category,
+    //   address: address,
+    //   image: image,
+    //   rating: rating,
+    //   cost: cost,
+    // }
     var addToUserRestaurantList = function( yelpRestaurantID ){
 
     };
@@ -29,7 +47,6 @@ angular.module('myApp.services', [])
     return {
 
     };
-
   })
 
 
@@ -86,4 +103,3 @@ angular.module('myApp.services', [])
 //     //       visited: false,
 //     //     },
 //     //   ]
-
