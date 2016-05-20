@@ -19,8 +19,8 @@ route.get('/', function(req, res) {
     res.json(data);
   }, function(err) {
     res.status(500).send('Yelp API error');
-    console.log(data):
+    console.log(data);
   })
 });
 
-exports = route;
+module.exports = route;
