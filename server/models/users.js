@@ -3,7 +3,7 @@ var db = require('../db');
 
 var User = module.exports
 
-User.create = function (incomingFbData) {
+User.findOrCreate = function (incomingFbData) {
 
   var attribs = Object.assign({}, fb_data)
 
