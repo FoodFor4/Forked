@@ -1,7 +1,6 @@
 angular.module('myApp.services', [])
 
   .factory('Services', function ($http) {
-
     // grabs existing user bucket list
     var getUserRestaurantList = function() {
       return $http({
