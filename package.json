@@ -22,7 +22,7 @@
     "express": "^4.13.1",
     "knex": "^0.11.3",
     "merge": "^1.2.0",
-    "node-yelp-api": "^1.1.0",
+    "node-yelp": "0.0.3",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1"
   },
