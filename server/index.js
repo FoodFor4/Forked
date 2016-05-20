@@ -10,10 +10,10 @@ var shared = ['angular'];
 app.get('/js/vendor-bundle.js', browserify(shared));
 app.get('/js/app-bundle.js', browserify('./client/app.js', { external: shared }));
 
-if(!process.env.NODE === 'test') {
+// if(!process.env.NODE === 'test') {
 	var port = process.env.PORT || 4000;
 	app.listen(port);
 	console.log("Listening on port", port);
-} else {
-	exports = app;
-}
+// } else {
+// 	exports = app;
+// }

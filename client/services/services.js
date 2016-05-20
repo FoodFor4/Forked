@@ -1,6 +1,6 @@
 angular.module('myApp.services', [])
 
-  .factory('List', function ($http) {
+  .factory('Services', function ($http) {
 
     var addToUserRestaurantList = function( yelpRestaurantID ){
 

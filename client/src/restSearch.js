@@ -1,19 +1,23 @@
 'use strict';
 
-angular.module('Search')
+// angular.module('restaurantSearch', [])
 
-  .controller('SerachCtrl', ['$scope', function($scope) {
-    
-   // display selected restaurant information
-  
-   // calls get request to yelp with given string input
-  $scope.enterSearch = function (  ) {
+//   .controller('SearchCtrl', function($scope) {
 
-  }
+//   $scope.welcome = 'Search Moduel Working!';
+//   $scope.buttonText = 'Button working';
 
-  // displays results from search.
-  $scope.displaySearchResults = function (  ) {
+//   var userInput = { name: "Franklin", location: "Austin" }
 
-  }
+//    // display selected list (wish/beenthere)
+//   $scope.searchByName = function ( str ) {
 
-}]);
+//   }
+ 
+// });
+
+module.exports = function($scope, $http) {
+  $scope.welcome = 'Search Moduel Working!';
+  $scope.buttonText = 'Button working';
+
+}
