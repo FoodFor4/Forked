@@ -35,55 +35,55 @@ angular.module('myApp.services', [])
 
 
 
-Search Feature response Limit 10:
-  send ==> { name: inputName,
-             location: inputLocation (default ATX)
-           }
+// Search Feature response Limit 10:
+//   send ==> { name: inputName,
+//              location: inputLocation (default ATX)
+//            }
 
-  response = [ 
-    {
-      name: name,
-      rating: rating,
-      image: image_url,
-      phone: phone,
-      address: location
-    },
-    {
-      name: name,
-      rating: rating,
-      image: image_url,
-      phone: phone,
-      address: location
-    },
-    ...
-   ];
+//   response = [ 
+//     {
+//       name: name,
+//       rating: rating,
+//       image: image_url,
+//       phone: phone,
+//       address: location
+//     },
+//     {
+//       name: name,
+//       rating: rating,
+//       image: image_url,
+//       phone: phone,
+//       address: location
+//     },
+//     ...
+//    ];
 
- Populate List querey
-  all meeting criteria
+//  Populate List querey
+//   all meeting criteria
 
-    // // we'll ping you with a DB querey for current restaurants via username?
-    // // we'll anticipate the ENTIRE list of restaurants... including the fields that users will later input
-    // // example: An array (the list) of restaurants associated with a user.
-    //   [
-    //     {
-    //       name: name,
-    //       rating: rating,
-    //       image: image_url,
-    //       phone: phone,
-    //       address: location,
-    // // // schema adds... (this will not be included when we send you back the restaurant to add...)
-    //       visited: true,
-    //       userReview: 140char (null or filled out...),
-    //       priceRange: (value 1, 2, 3, 4),
-    //       userRating: (null OR 1-5),
-    //     },
-    //     {
-    //       name: name,
-    //       rating: rating,
-    //       image: image_url,
-    //       phone: phone,
-    //       address: location,
-    //       visited: false,
-    //     },
-    //   ]
+//     // // we'll ping you with a DB querey for current restaurants via username?
+//     // // we'll anticipate the ENTIRE list of restaurants... including the fields that users will later input
+//     // // example: An array (the list) of restaurants associated with a user.
+//     //   [
+//     //     {
+//     //       name: name,
+//     //       rating: rating,
+//     //       image: image_url,
+//     //       phone: phone,
+//     //       address: location,
+//     // // // schema adds... (this will not be included when we send you back the restaurant to add...)
+//     //       visited: true,
+//     //       userReview: 140char (null or filled out...),
+//     //       priceRange: (value 1, 2, 3, 4),
+//     //       userRating: (null OR 1-5),
+//     //     },
+//     //     {
+//     //       name: name,
+//     //       rating: rating,
+//     //       image: image_url,
+//     //       phone: phone,
+//     //       address: location,
+//     //       visited: false,
+//     //     },
+//     //   ]
 
