@@ -4,7 +4,6 @@ var angular = require('angular')
               require('angular-animate');
               require('angular-cookies');
               require('angular-sanitize');
-              require('angular-touch');
               require('angular-resource');
               require('angular-aria');
               require('angular-material');
@@ -17,7 +16,6 @@ angular.module('myApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch',
     'ngMaterial'
   ])
 
