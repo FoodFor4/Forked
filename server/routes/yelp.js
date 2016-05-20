@@ -22,3 +22,5 @@ route.get('/', function(req, res) {
     console.log(data):
   })
 });
+
+exports = route;
