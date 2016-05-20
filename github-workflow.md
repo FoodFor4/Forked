@@ -11,6 +11,7 @@ During work
 
 2. Upstream changed
   git pull --rebase upstream feature/branch OR master
+2.1 npm install
 3. Push to origin
   git push origin
 4. Open a pull request
