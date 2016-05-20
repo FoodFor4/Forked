@@ -1,13 +1,12 @@
 'use strict';
 
-angular.module('List')
+angular.module('list', [])
 
-  .controller('ListCtrl', ['$scope', function($scope) {
-    
+  .controller('ListCtrl', function($scope) {
 
    // display selected list (wish/beenthere)
   $scope.filterList = function (  ) {
 
   }
-
-}]);
+ 
+});
