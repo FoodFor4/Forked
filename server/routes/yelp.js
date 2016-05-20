@@ -30,9 +30,10 @@ route.get('/', function(req, res) {
   }).then(function(data) {
     var modifiedData = data.businesses.map( (dat) => { return {
       name: dat.name,
-
+      rating: dat.rating,
       phone: dat.phone.slice(0, 3) + '-' + dat.phone.slice(3, 6) + '-' + dat.phone.slice(6, 10),
       image: dat.image_url,
+      categories: dat.categories,
       address: dat.location.display_address
     }; })
 
