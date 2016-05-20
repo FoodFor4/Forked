@@ -1,0 +1,29 @@
+<div class="jumbotron" ng-controller="SearchCtrl">
+  <h1>{{welcome}}</h1>
+  <md-input-container>
+        <label>Restaurant: </label>
+        <input ng-model="searchInput.term">
+  </md-input-container>
+  <md-input-container>
+        <label>City: </label>
+        <input ng-model="searchInput.location">
+  </md-input-container>
+  <i class="material-icons" ng-click='submitSearch()'>search</i>
+
+  <div ng-cloak ng-model="serverReply">
+    <div class='md-padding' layout="row" layout-wrap>
+        <md-card style="width: 350px;">
+          <md-card-content>
+            <h2>{{serverReply[0].name}}</h2>
+            <img src='{{serverReply[0].image}}'>
+            <p>{{serverReply[0].rating}}</p>
+            <p>{{serverReply[0].categories[0][0]}}</p>
+          </md-card-content>
+          <div class="md-actions" layout="row" layout-align="end center">
+            <md-button>Add</md-button>
+          </div>
+        </md-card>
+      </div>
+  </div>
+
+</div>

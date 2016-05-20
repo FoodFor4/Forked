@@ -4,9 +4,11 @@ var angular = require('angular')
               require('angular-animate');
               require('angular-cookies');
               require('angular-sanitize');
-              require('angular-touch');
               require('angular-resource');
-
+              require('angular-aria');
+              require('angular-material');
+              require('angular-messages');
+              require('angular-resource');
 
 angular.module('myApp', [
     'ngAnimate',
@@ -14,8 +16,9 @@ angular.module('myApp', [
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngMaterial'
   ])
+
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -23,10 +26,10 @@ angular.module('myApp', [
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .when('/search', {
+        templateUrl: 'views/restSearch.html',
+        controller: 'SearchCtrl',
+        controllerAs: 'search'
       })
       .otherwise({
         redirectTo: '/'
@@ -43,4 +46,9 @@ when we inject a controller/factory/directive we use the format found below:
 
 app.controller('MainCtrl', require('./src/main.js'));
 app.controller('AboutCtrl', require('./src/about.js'));
+
+// Controllers to add:
+app.controller('SearchCtrl', require('./src/restSearch.js'));
+// app.controller('ListCtrl', require('./src/list.js'));
+// app.controller('FriendsCtrl', require('./src/friendList.js'));
 
