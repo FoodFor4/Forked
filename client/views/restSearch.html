@@ -10,14 +10,14 @@
   </md-input-container>
   <i class="material-icons" ng-click='submitSearch()'>search</i>
 
-  <div ng-cloak ng-model="serverReply">
-    <div class='md-padding' layout="row" layout-wrap>
-        <md-card style="width: 350px;">
+  <div id="searchResults" class="card" ng-cloak ng-model="serverReply">
+    <div class='md-padding' layout="row" flex>
+        <md-card style="width: 350px;" ng-repeat="restaurant in serverReply" flex>
           <md-card-content>
-            <h2>{{serverReply[0].name}}</h2>
-            <img src='{{serverReply[0].image}}'>
-            <p>{{serverReply[0].rating}}</p>
-            <p>{{serverReply[0].categories[0][0]}}</p>
+            <h3>{{restaurant.name}}</h3>
+            <img src='{{restaurant.image}}'>
+            <p>{{restaurant.rating}}</p>
+            <p>{{restaurant.categories[0][0]}}</p>
           </md-card-content>
           <div class="md-actions" layout="row" layout-align="end center">
             <md-button>Add</md-button>
@@ -27,3 +27,4 @@
   </div>
 
 </div>
+
