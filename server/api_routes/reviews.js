@@ -4,7 +4,7 @@ var reviews = require('../models/reviews')
 //Implicitly attached to /reviews/
 var routes = express.Router();
 
-var url = require(url);
+var url = require('url');
 
 //???
 
