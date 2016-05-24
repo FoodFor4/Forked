@@ -71,10 +71,9 @@ knex.ensureSchema = function () {
           table.integer('rest_id');
           table.foreign('user_id').references('users.user_id');
           table.foreign('rest_id').references('restaurants.rest_id');
-          table.integer('rating');
+          table.integer('user_rating');
           table.string('review');
           table.string('price');
-          table.string('category');
         }).then(function (table) {
           console.log("created reviews table")
         })
