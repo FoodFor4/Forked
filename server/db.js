@@ -1,8 +1,17 @@
+
 var knex = require('knex')({
   client: 'pg',
   connection: process.env.PG_CONNECTION_STRING,
   searchPath: 'knex,public'
 });
+
+/*var knex = require('knex')({
+  client: 'sqlite3',
+  useNullAsDefault: true,
+  connection: {
+    filename: './test.db'
+  }
+})*/
 
 
 module.exports = knex;
@@ -41,8 +50,10 @@ knex.ensureSchema = function () {
       if(!exists) {
         knex.schema.createTable('buckets', function(table) {
           table.increments();
-          table.foreign('user_id').references('users');
-          table.foreign('rest_id').references('restaurants');
+          table.integer('user_id');
+          table.integer('rest_id');
+          table.foreign('user_id').references('users.user_id');
+          table.foreign('rest_id').references('restaurants.rest_id');
           table.string('category');
         }).then(function (table) {
           console.log("created buckets table")
@@ -54,8 +65,10 @@ knex.ensureSchema = function () {
       if(!exists) {
         knex.schema.createTable('reviews', function(table) {
           table.increments();
-          table.foreign('user_id').references('users');
-          table.foreign('rest_id').references('restaurants');
+          table.integer('user_id');
+          table.integer('rest_id');
+          table.foreign('user_id').references('users.user_id');
+          table.foreign('rest_id').references('restaurants.rest_id');
           table.integer('rating');
           table.string('review');
           table.string('price');
