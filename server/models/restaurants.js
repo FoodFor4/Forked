@@ -13,12 +13,15 @@ var Restaurants = module.exports
 	// 	 address: dat.location.display_address
 	// }
 
-Restaurants.addNew = function (selectedRestaurantData) {
+Restaurants.findOrCreate = function (selectedRestaurantData) {
 	
 	var restaurantInfo = Object.assign({}, selectedRestaurantData);
 
 	console.log("created restaurant with data: ", restaurantInfo)
 
 	return db('restaurants').insert(restaurantInfo)
+    .then(function (result) {
+    return result
+  })
 
 }
