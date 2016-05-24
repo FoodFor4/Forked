@@ -21,6 +21,7 @@ Restaurants.findOrCreate = function (selectedRestaurantData) {
 
 	return db('restaurants').insert(restaurantInfo)
     .then(function (result) {
+	console.log('findOrCreate called on ', restaurantInfo, 'returning', result);    	
     return result
   })
 

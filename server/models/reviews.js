@@ -19,6 +19,7 @@ Reviews.addNew = function (restaurantReviewData) {
 
 	return db('reviews').insert(reviewInfo)
     .then(function (result) {
+    console.log('addNew called on ', restaurantReviewData, 'returning', result);
     return result
   })
 }
@@ -27,6 +28,7 @@ Reviews.addNew = function (restaurantReviewData) {
 Reviews.getReviews = function (rest_id) {
 	return db('reviews').where({ rest_id: rest_id })
     .then(function (rows) {
+			console.log('getReviews called on ', rest_id, 'returning', rows);    	
       return rows
     })
 }
