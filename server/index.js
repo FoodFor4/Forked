@@ -1,6 +1,7 @@
 var browserify = require('browserify-middleware')
 var express = require('express');
 var app = express();
+var db = require('./db')
 
 var yelpApi = require('./routes/yelp')
 var facebookLogin = require('./routes/facebook')
@@ -22,6 +23,7 @@ app.use('/auth', facebookLogin);
 if(process.env.NODE !== 'test') {
 	var port = process.env.PORT || 4000;
 	app.listen(port);
+	db.ensureSchema();
 	console.log("Listening on port", port);
 } else {
 	exports = app;

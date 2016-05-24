@@ -10,11 +10,26 @@ passport.use(new FacebookStrategy({
 },
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
-    Users.findOrCreate({ facebookId: profile.id, facebookName: profile.profileName }).then( function(data) {
+    Users.findOrCreate({ facebookId: profile.id, facebookName: profile.displayName }).then( function(data) {
       console.log(data);
+      cb(null, data); 
+    }).catch(function(err) {
+      cb(err, null);
     });
   }
 ));
+
+passport.serializeUser(function(user, done) {
+  console.log(user);
+  done(null, user);
+})
+
+passport.deserializeUser(function(user, done) {
+  console.log(user);
+  done(null, user);
+})
+
+route.use(passport.initialize());
 
 
 route.get('/facebook',

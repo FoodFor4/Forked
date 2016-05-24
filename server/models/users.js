@@ -15,5 +15,8 @@ User.findOrCreate = function (incomingFbData) {
   };
 
 
-  return db('users').insert(userInfo)
+  return db('users').insert(userInfo).then(function(data) {
+  	userInfo.id = data[0];
+  	return userInfo;
+  });
 }
