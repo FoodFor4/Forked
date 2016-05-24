@@ -27,12 +27,13 @@ route.get('/', function(req, res) {
     sort: 0
   }).then(function(data) {
     var modifiedData = data.businesses.map( (dat) => { return {
+      yelp_id: dat.id,
       name: dat.name,
-      rating: dat.rating,
+      address: dat.location.display_address,
       phone: dat.phone.slice(0, 3) + '-' + dat.phone.slice(3, 6) + '-' + dat.phone.slice(6, 10),
-      image: dat.image_url,
       categories: dat.categories.map( (arr) => arr[0] ),
-      address: dat.location.display_address
+      image: dat.image_url,
+      yelp_rating: dat.rating
     }; })
 
     res.status(200).json(modifiedData);
