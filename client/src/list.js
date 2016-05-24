@@ -1,12 +1,9 @@
 'use strict';
+//   -- ListCtrl -- 
 
-angular.module('list', [])
+module.exports = function ($scope, $http /*ServerServices*/) {
 
-  .controller('ListCtrl', function($scope) {
-
-   // display selected list (wish/beenthere)
-  $scope.filterList = function (  ) {
-
+  $scope.loadUserList = function() {
   }
- 
-});
+  
+};
