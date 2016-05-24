@@ -1,0 +1,26 @@
+
+<div ng-controller="ReviewCtrl" class="md-padding" ng-cloak>
+<h1>{{message}}</h1>
+ <div class='reviewBox'>
+   <h3 class="md-title">Select a rating:</h3>
+   <div>
+     <md-input-container>
+       <label>Rating:</label>
+       <md-select ng-model="selectedRating" md-selected-text="getSelectedRating()">
+         <md-optgroup>
+           <md-option ng-value="rating" ng-repeat="rating in ratings">{{rating}}</md-option>
+         </md-optgroup>
+       </md-select>
+     </md-input-container>
+   <h3 class="md-title">Quick review:</h3>
+   </div>
+   <div>
+     <textarea class='reviewTextBox' type='text' name='review' ng-model='textReview'></textarea>
+     <p>{{textLength}} characters left!</p>
+     <md-button class="md-raised" ng-click="submitReview()">Submit</md-button>
+   </div>
+ </div>
+ <md-button class="md-raised" ng-click="showReview()">Show it</md-button>
+ <pre>{{textReview}}</pre>
+ <pre>{{usersReview}}</pre>
+</div>
