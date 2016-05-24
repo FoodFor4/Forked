@@ -38,8 +38,10 @@ knex.ensureSchema = function () {
           table.string('yelp_id');
           table.string('name');
           table.string('address');
-          table.string('phone');
+          table.string('phone', 15);
+          table.string('food_categories');
           table.string('photo_url');
+          table.string('yelp_rating');          
         }).then(function (table) {
           console.log("created restaurants table")
         })
@@ -69,10 +71,9 @@ knex.ensureSchema = function () {
           table.integer('rest_id');
           table.foreign('user_id').references('users.user_id');
           table.foreign('rest_id').references('restaurants.rest_id');
-          table.integer('rating');
-          table.string('review');
+          table.integer('user_rating');
+          table.string('review', 140);
           table.string('price');
-          table.string('category');
         }).then(function (table) {
           console.log("created reviews table")
         })
