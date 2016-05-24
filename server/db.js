@@ -38,7 +38,7 @@ knex.ensureSchema = function () {
           table.string('yelp_id');
           table.string('name');
           table.string('address');
-          table.string('phone');
+          table.string('phone', 15);
           table.string('food_categories');
           table.string('photo_url');
           table.string('yelp_rating');          
@@ -72,7 +72,7 @@ knex.ensureSchema = function () {
           table.foreign('user_id').references('users.user_id');
           table.foreign('rest_id').references('restaurants.rest_id');
           table.integer('user_rating');
-          table.string('review');
+          table.string('review', 140);
           table.string('price');
         }).then(function (table) {
           console.log("created reviews table")
