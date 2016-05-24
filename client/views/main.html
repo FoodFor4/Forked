@@ -23,7 +23,7 @@
               <div class='md-padding' layout="row" flex>
                 <md-card style="width: 350px;" ng-repeat="restaurant in mainServerReply | filter:{visited:false}" flex>
                 <md-card-content>
-                  <h3>{{restaurant2.name}}</h3>
+                  <h3>{{restaurant.name}}</h3>
                   <img src='{{restaurant.image}}'>
                   <p>{{restaurant.rating}}</p>
                   <p>{{restaurant.categories[0][0]}}</p>
@@ -43,7 +43,7 @@
               <div class='md-padding' layout="row" flex>
                 <md-card style="width: 350px;" ng-repeat="restaurant in mainServerReply | filter:{visited:true}" flex>
                 <md-card-content>
-                  <h3>{{restaurant2.name}}</h3>
+                  <h3>{{restaurant.name}}</h3>
                   <img src='{{restaurant.image}}'>
                   <p>{{restaurant.rating}}</p>
                   <p>{{restaurant.categories[0][0]}}</p>
