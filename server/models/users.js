@@ -39,3 +39,10 @@ User.findOrCreate = function (incomingFbData) {
   	return userInfo;
   });
 }
+
+User.findByFbId = function (id) {
+  return db('users').where({ fb_id: id }).limit(1)
+    .then(function (rows) {
+      return rows[0]
+    })
+}
