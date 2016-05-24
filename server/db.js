@@ -39,7 +39,9 @@ knex.ensureSchema = function () {
           table.string('name');
           table.string('address');
           table.string('phone');
+          table.string('food_categories');
           table.string('photo_url');
+          table.string('yelp_rating');          
         }).then(function (table) {
           console.log("created restaurants table")
         })
