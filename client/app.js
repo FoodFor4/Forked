@@ -49,6 +49,7 @@ app.controller('AboutCtrl', require('./src/about.js'));
 
 // Controllers to add:
 app.controller('SearchCtrl', require('./src/restSearch.js'));
+app.controller('ListCtrl', require('./src/list.js'));
 // app.controller('ListCtrl', require('./src/list.js'));
 // app.controller('FriendsCtrl', require('./src/friendList.js'));
 
