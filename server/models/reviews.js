@@ -32,3 +32,11 @@ Reviews.getReviews = function (rest_id) {
       return rows
     })
 }
+
+Reviews.getUserReview = function (user_id, rest_id) {
+  return db('reviews').where({user_id, rest_id})
+    .then(function (rows) {
+      console.log('getUserReview called on ', user_id, rest_id, 'returning', rows);
+      return rows;
+    })
+}
