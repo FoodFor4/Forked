@@ -1,26 +1,49 @@
 
 <div ng-controller="ReviewCtrl" class="md-padding" ng-cloak>
-<h1>{{message}}</h1>
- <div class='reviewBox'>
-   <h3 class="md-title">Select a rating:</h3>
-   <div>
-     <md-input-container>
-       <label>Rating:</label>
-       <md-select ng-model="selectedRating" md-selected-text="getSelectedRating()">
-         <md-optgroup>
-           <md-option ng-value="rating" ng-repeat="rating in ratings">{{rating}}</md-option>
-         </md-optgroup>
-       </md-select>
-     </md-input-container>
-   <h3 class="md-title">Quick review:</h3>
-   </div>
-   <div>
-     <textarea class='reviewTextBox' type='text' name='review' ng-model='textReview' ng=maxlength='140'></textarea>
-     <p>{{textLength - textReview.length}} characters left...</p>
-     <md-button class="md-raised" ng-click="submitReview()">Submit</md-button>
-   </div>
- </div>
- <md-button class="md-raised" ng-click="showReview()">Show it</md-button>
- <pre>{{textReview}}</pre>
- <pre>{{usersReview}}</pre>
+  <h1>{{message}}</h1>
+  <div class='reviewBox'>
+    <h3>{{targetRestaurant}}</h3>
+    <h3 class="md-title">Select a rating:</h3>
+    <div>
+      <md-input-container>
+        <label>Rating:</label>
+        <md-select ng-model="selectedRating" md-selected-text="getSelectedRating()">
+          <md-optgroup>
+            <md-option ng-value="rating" ng-repeat="rating in ratings">{{rating}}</md-option>
+           </md-optgroup>
+        </md-select>
+      </md-input-container>
+      <h3 class="md-title">Quick review:</h3>
+    </div>
+    <div>
+      <textarea class='reviewTextBox' type='text' name='review' ng-model='textReview' ng=maxlength='140'></textarea>
+      <p>{{textLength - textReview.length}} characters left...</p>
+      <md-button class="md-raised" ng-click="submitReview()">Submit</md-button>
+    </div>
+  </div>
+  <md-button class="md-raised" ng-click="showReview()">Show it</md-button>
+  <pre>{{textReview}}</pre>
+  <pre>{{usersReview}}</pre>
 </div>
+
+<h4>Reviews</h4>
+<blockquote ng-repeat="review in restuarant.reviews"></blockquote>
+
+<form name="reviewForm">
+  <blockquote>
+    <b>Rating: {{review.rating}}</b>
+    {{review.body}}
+    <p>{{review.userName}}</p>
+  </blockquote>
+  <select ng-model="review.rating">
+    <option value="1">Really Bad</option>
+    <option value="2">Bad</option>
+    <option value="3">Meh</option>
+    <option value="4">Good</option>
+    <option value="5">Really Good</option>
+  </select>
+  <textarea ng-model="review.body"></textarea>
+  <label>by:</label>
+  <p ng-model="review.author"></p>
+</form>
+
