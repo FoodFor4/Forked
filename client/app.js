@@ -26,6 +26,11 @@ angular.module('myApp', [
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/login', {
+        templateUrl: 'views/forkedLogin.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .when('/search', {
         templateUrl: 'views/restSearch.html',
         controller: 'SearchCtrl',
@@ -36,7 +41,7 @@ angular.module('myApp', [
       });
   });
 
-//define the application module 
+//define the application module
 var app = require('angular').module('myApp');
 
 /*
@@ -45,7 +50,7 @@ when we inject a controller/factory/directive we use the format found below:
 */
 
 app.controller('MainCtrl', require('./src/main.js'));
-app.controller('AboutCtrl', require('./src/about.js'));
+app.controller('LoginCtrl', require('./src/forkedLogin.js'));
 
 // Controllers to add:
 app.controller('SearchCtrl', require('./src/restSearch.js'));

@@ -1,8 +1,35 @@
 'use strict';
 
-angular.module('myApp')
-  .controller('AboutCtrl', ['$scope', function($scope) {
-    
-    //facebook auth
 
-  }]);
+module.exports = function($scope) {
+
+    $scope.welcomeLogin = 'Login Module';
+
+    $scope.loginFacebook = function() {
+      console.log("begin Facebook login process");
+    };
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// angular.module('myApp')
+//   .controller('LoginCtrl', ['$scope', function($scope) {
+
+
+
+
+
+
+
+//   }]);
