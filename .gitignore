@@ -2,3 +2,5 @@ node_modules/
 client/lib/
 server/api_keys
 coverage/
+environment_variables.sh
+test.db
