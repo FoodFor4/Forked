@@ -1,6 +1,6 @@
 module.exports = function ($scope, $http) {
 
- $scope.message = 'Review Page';
+ $scope.message = 'Review Modal';
 
  $scope.ratings = ["Real Bad", "Bad", "Meh", "Good", "Real Good"];
  $scope.selectedRating;
