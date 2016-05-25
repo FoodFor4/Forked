@@ -6,6 +6,9 @@ var db = require('./db')
 var yelpApi = require('./routes/yelp')
 var facebookLogin = require('./routes/facebook')
 
+var reviewRoutes = require('./api_routes/reviews')
+var restRoutes = require('./api_routes/restaurants')
+
 //route to your index.html
 app.use(express.static('client/'));
 
@@ -18,6 +21,9 @@ app.get('/js/app-bundle.js', browserify('./client/app.js', { external: shared })
 
 app.use('/yelp-api', yelpApi);
 app.use('/auth', facebookLogin);
+
+app.use('/reviews', reviewRoutes);
+app.use('/restaurants', restRoutes);
 
 
 if(process.env.NODE !== 'test') {

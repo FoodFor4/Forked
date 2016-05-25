@@ -1,10 +1,16 @@
 var express =  require('express')
+var users = require('../models/users')
+
+//Implicitly attached to /users/
 var routes = express.Router();
 
-routes.get('/' , function(req, res) {
+var url = require('url');
 
-});
+//???
 
-routes.post('/', function(req, res) {
+routes.get('/', function(req, res) {
+	var arguments = url.parse(req.url, true).query;
 
+	res.status(200);
+	res.json(arguments);
 })
