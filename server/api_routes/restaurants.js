@@ -10,11 +10,23 @@ var routes = express.Router();
 //???
 
 routes.get('/', function(req, res) {
-	var arguments = url.parse(req.url, true).query;
+	var URLarguments = url.parse(req.url, true).query;
 
-	res.status(200).json(arguments);
+	restaurants.findOrCreate(URLarguments).then(function(data) {
+		console.log('restaurants get', data);
+		res.status(200).json(data);
+	}).catch(function(err) {
+		console.log('restaurants get err', err);
+		res.status(500).send('Server Error');
+	})
 })
 
 routes.post('/', bodyParser.json(), function(req, res) {
-	res.status(202).json(req.body);
+	restaurants.findOrCreate(req.body).then(function(data) {
+		console.log('restaurants post', data);
+		res.status(202).json(data);
+	}).catch(function(err) {
+		console.log('restaurants post err', err);
+		res.status(500).send('Server Error');
+	})
 })

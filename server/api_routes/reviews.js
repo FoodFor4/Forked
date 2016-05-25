@@ -5,6 +5,8 @@ var reviews = require('../models/reviews')
 var routes = express.Router();
 
 var url = require('url');
+var bodyParser = require('body-parser')
+
 
 //???
 
@@ -22,7 +24,7 @@ routes.get('/', function(req, res) {
 		})
 })
 
-routes.post('/', function(req, res) {
+routes.post('/', bodyParser.json(), function(req, res) {
 	var argumentBody = req.body;
 
 	reviews.addNew(arguments).then(function(data) {
