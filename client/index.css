@@ -56,16 +56,25 @@ h1{
 }
 
 .reviewBox{
- text-align: center;
- max-width: 33em;
- border: 1px solid black;
+  margin: auto;
+  text-align: center;
+  max-width: 20em;
+  border: 1px solid black;
 }
 
 .reviewTextBox {
- align-self: center;
- display: block;
- border: 1px solid;
- width: 10em;
- height: 14em;
+  margin: auto;
+  align-self: center;
+  display: block;
+  border: 1px solid;
+  width: 10em;
+  height: 14em;
 }
 
+.md-padding {
+  text-align: center;
+}
+
+.background {
+  background-color: gray;
+}
