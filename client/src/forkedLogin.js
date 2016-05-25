@@ -1,8 +1,13 @@
 'use strict';
 
 
-module.exports = function($scope, $http) {
+module.exports = function($scope) {
+
     $scope.welcomeLogin = 'Login Module';
+
+    $scope.loginFacebook = function() {
+      console.log("begin Facebook login process");
+    };
 
 }
 
