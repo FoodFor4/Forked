@@ -16,5 +16,5 @@ routes.get('/', function(req, res) {
 })
 
 routes.post('/', bodyParser.json(), function(req, res) {
-	res.send(202).json(req.body);
+	res.status(202).json(req.body);
 })
