@@ -15,8 +15,8 @@
    <h3 class="md-title">Quick review:</h3>
    </div>
    <div>
-     <textarea class='reviewTextBox' type='text' name='review' ng-model='textReview'></textarea>
-     <p>{{textLength}} characters left!</p>
+     <textarea class='reviewTextBox' type='text' name='review' ng-model='textReview' ng=maxlength='140'></textarea>
+     <p>{{textLength - textReview.length}} characters left...</p>
      <md-button class="md-raised" ng-click="submitReview()">Submit</md-button>
    </div>
  </div>
