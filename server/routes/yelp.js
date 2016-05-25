@@ -3,13 +3,6 @@ var merge = require('merge');
 var route = require('express').Router();
 var url   = require('url');
 
-console.log({
-    consumer_key: process.env.YELP_CONSUMER_KEY,
-    consumer_secret: process.env.YELP_CONSUMER_SECRET,
-    token: process.env.YELP_TOKEN,
-    token_secret: process.env.YELP_TOKEN_SECRET
-  })
-
 var client = yelp.createClient({
   oauth: {
     consumer_key: process.env.YELP_CONSUMER_KEY,
