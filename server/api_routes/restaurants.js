@@ -12,7 +12,7 @@ var routes = express.Router();
 routes.get('/', function(req, res) {
 	var URLarguments = url.parse(req.url, true).query;
 
-	restaurants.findOrCreate(URLarguments).then(function(data) {
+	restaurants.find(URLarguments).then(function(data) {
 		console.log('restaurants get', data);
 		res.status(200).json(data);
 	}).catch(function(err) {
