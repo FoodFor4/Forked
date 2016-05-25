@@ -14,3 +14,5 @@ routes.get('/', function(req, res) {
 	res.status(200);
 	res.json(arguments);
 })
+
+module.exports = routes;
