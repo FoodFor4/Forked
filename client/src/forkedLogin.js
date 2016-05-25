@@ -1,8 +1,21 @@
 'use strict';
 
-angular.module('myApp')
-  .controller('AboutCtrl', ['$scope', function($scope) {
-    
-    //facebook auth
 
-  }]);
+module.exports = function($scope, $http /*SeverService*/) {
+
+
+
+}
+
+
+// angular.module('myApp')
+//   .controller('LoginCtrl', ['$scope', function($scope) {
+
+//     $scope.loginWelcome = 'Login Module';
+
+
+
+
+
+
+//   }]);

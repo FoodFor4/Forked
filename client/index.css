@@ -42,6 +42,19 @@ h1{
   float: left;
 }
 
+#login-banner {
+  position: absolute;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.facebook {
+    position: relative;
+    top:150px;
+}
+
 .reviewBox{
  text-align: center;
  max-width: 33em;
