@@ -56,6 +56,5 @@ app.controller('AboutCtrl', require('./src/about.js'));
 app.controller('SearchCtrl', require('./src/restSearch.js'));
 app.controller('ListCtrl', require('./src/list.js'));
 app.controller('ReviewCtrl', require('./src/restReview.js'));
-// app.controller('ListCtrl', require('./src/list.js'));
-// app.controller('FriendsCtrl', require('./src/friendList.js'));
 
+app.factory('Services', require('./services/services.js'));

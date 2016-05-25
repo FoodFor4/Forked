@@ -1,49 +1,6 @@
 'use strict';
 
-module.exports = function($scope, $http /*SeverService*/) {
-
-  // //hardcode Franklin example
-  // $scope.Franklin = {
-  //   name: 'Franklin Barbequeue',
-  //   rating: 4.5,
-  //   image: 'http://s3-media1.fl.yelpcdn.com/bphoto/hgki6r-7BTjxdeR7GshAIw/ms.jpg',
-  //   phone: '5124746300',
-  //   address: ["900 E 11th St",
-  //           "East Austin",
-  //           "Austin, TX 78702"],
-  //   categories: [['Barbecue', 'bbq']]
-  // };
-
-  // $scope.Branklin = {
-  //   name: 'Branklin Barbequeue',
-  //   rating: 4.5,
-  //   image: 'http://s3-media1.fl.yelpcdn.com/bphoto/hgki6r-7BTjxdeR7GshAIw/ms.jpg',
-  //   phone: '5124746300',
-  //   address: ["900 E 11th St",
-  //           "East Austin",
-  //           "Austin, TX 78702"],
-  //   categories: [['Barbecue', 'bbq']]
-  // };
-
-  // //hardcode Perry's example
-  // $scope.Perrys = {
-  //   name: "Perry's Steakhouse & Grille",
-  //   rating: 4.0,
-  //   image: 'http://s3-media3.fl.yelpcdn.com/bphoto/-br-DGSTV4VcLroYw6kg1Q/ms.jpg',
-  //   phone: '5124746300',
-  //   address: ["114 W 7th St",
-  //           "Downtown",
-  //           "Austin, TX 78701"],
-  //   categories: [
-  //       ["Steakhouses",
-  //         "steak"
-  //       ],
-  //       [
-  //         'Seafood',
-  //         'seafood'
-  //       ]
-  //   ]
-  // };
+module.exports = function($scope, $http, Services) {
 
   $scope.welcome = 'Search Module';
 
@@ -61,13 +18,12 @@ module.exports = function($scope, $http /*SeverService*/) {
   $scope.submitSearch = function(){
     var restRequest = {
       // search name entered...
-      name: $scope.searchInput.term,
+      term: $scope.searchInput.term,
       // default is Austin, but can change...
-      city: $scope.searchInput.location
+      location: $scope.searchInput.location
     }
+    console.log(Services.yelpSearchResults(restRequest));
     console.log('Submitted search criterion: ', restRequest);
-    //wishful programming...
-   // return userSearch( restRequest )();
   }
 
   // $scope.displayResponse = function( obj ){
