@@ -11,6 +11,25 @@ var url = require('url');
 routes.get('/', function(req, res) {
 	var arguments = url.parse(req.url, true).query;
 
-	res.status(200);
-	res.json(arguments);
+	reviews.getUserReview(arguments.user_id, arguments.rest_id)
+		.then(function(data) {
+			console.log('Reviews get', data);
+			res.status(200).json(data);
+		})
+		.catch(function(err){
+			console.log('Reviews get err', err);
+			res.status(500).send('Server Error.');
+		})
+})
+
+routes.post('/', function(req, res) {
+	var argumentBody = req.body;
+
+	reviews.addNew(arguments).then(function(data) {
+		console.log('Reviews post', data);
+		res.status(202).json(data);
+	}).catch(function(err) {
+		console.log('Reviews post err', err);
+		res.status(500).send("Server Error.");
+	})
 })
