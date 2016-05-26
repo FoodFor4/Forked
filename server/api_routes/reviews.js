@@ -25,9 +25,9 @@ routes.get('/', function(req, res) {
 })
 
 routes.post('/', bodyParser.json(), function(req, res) {
-	var argumentBody = req.data;
+	var args = req.body;
 
-	reviews.addNew(arguments).then(function(data) {
+	reviews.addNew(args).then(function(data) {
 		console.log('Reviews post', data);
 		res.status(202).json(data);
 	}).catch(function(err) {
