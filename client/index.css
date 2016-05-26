@@ -27,8 +27,12 @@ h1{
   .tabsdemoDynamicHeight md-content h1:first-child {
     margin-top: 0; }
 
-
 #wishlist #searchResults .md-padding {
+  flex-wrap: wrap;
+  display: flex;
+}
+
+#searchResults .md-padding {
   flex-wrap: wrap;
   display: flex;
 }
@@ -71,10 +75,6 @@ h1{
   height: 14em;
 }
 
-.md-padding {
-  text-align: center;
-}
-
-.background {
-  background-color: gray;
+#cards {
+  width: 20em;
 }
