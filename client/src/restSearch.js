@@ -2,6 +2,8 @@
 
 module.exports = function($scope, $http, Services) {
 
+  $scope.user_id = 1;
+
   $scope.welcome = 'Search Module';
   $scope.serverReply;
   $scope.userChoice;
@@ -32,12 +34,10 @@ module.exports = function($scope, $http, Services) {
     console.log('Submitted search criterion: ', restRequest);
   }
 
-  $scope.displayResponse = function( obj ){
-    console.log('object from resposne :', obj);
-    obj.map(function(item){
-    })
+  $scope.sendUserChoice = function(addChoice) {
+    console.log('click add choice: ', addChoice);
+    Services.yelpSearchAdd(addChoice);
   }
-
 
 // $scope.serverReply = [$scope.Franklin,$scope.Perrys,$scope.Uchi,$scope.Tacodeli,$scope.SalvationPizza,$scope.GussWorldFamousFriedChicken,$scope.KerbeyLaneCafe,$scope.MattsFamousElRancho];
 

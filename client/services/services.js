@@ -16,6 +16,7 @@ module.exports = function($http) {
   };
 
   var yelpSearchAdd = function( obj ) {
+    console.log('yelpSearchAdd firing...');
     return $http({
       method: 'POST',
       url: '/restaurants/',
@@ -28,7 +29,7 @@ module.exports = function($http) {
 
   return {
     yelpSearchResults: yelpSearchResults,
-    yelpSearchAdd: yelpSearchAdd
+    yelpSearchAdd: yelpSearchAdd,
   }
 
 }
