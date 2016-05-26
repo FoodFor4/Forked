@@ -75,6 +75,26 @@ h1{
   height: 14em;
 }
 
-#cards {
-  width: 20em;
+.restaurantTile {
+  width: 15em;
+}
+
+.restaurantImg {
+  width: 90%
+}
+
+.addBtn {
+  background-color: green;
+  color: white;
+  font-weight: bold;
+}
+
+.infoBtn {
+  background-color: #2380E2;
+  color: white;
+  font-weight: bold;
+}
+
+.material-icons {
+  cursor: pointer;
 }

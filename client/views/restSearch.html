@@ -13,14 +13,14 @@
   <div id="searchResults" class="card" ng-cloak ng-model="serverReply">
     <div class='md-padding' layout="horizontal">
         <md-card class="cards" ng-repeat="restaurant in serverReply" layout-wrap>
-          <md-card-content>
-            <h3>{{restaurant.name}}</h3>
-            <img src='{{restaurant.image}}'>
-            <p>{{restaurant.yelp_rating}}</p>
-            <p>{{restaurant.categories[0]}}</p>
+          <md-card-content class="restaurantTile">
+            <h2>{{restaurant.name}}</h2>
+            <img class="restaurantImg"src='{{restaurant.image}}'>
+            <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
+            <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
           </md-card-content>
           <div class="md-actions" layout="row" layout-align="end center">
-            <md-button ng-model='userChoice' ng-click='sendUserChoice(restaurant)'>Add</md-button>
+            <md-button ng-model='toAdd' ng-click='addToRestaurants(restaurant)'>Add</md-button>
           </div>
         </md-card>
       </div>
