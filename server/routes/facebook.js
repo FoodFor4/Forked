@@ -11,7 +11,7 @@ passport.use(new FacebookStrategy({
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
     Users.findOrCreate({ facebookId: profile.id, facebookName: profile.displayName }).then( function(data) {
-      console.log(data);
+      console.log(cb)
       cb(null, data); 
     }).catch(function(err) {
       cb(err, null);
@@ -20,12 +20,12 @@ passport.use(new FacebookStrategy({
 ));
 
 passport.serializeUser(function(user, done) {
-  console.log(user);
+  console.log('Serialize User', user);
   done(null, user);
 })
 
 passport.deserializeUser(function(user, done) {
-  console.log(user);
+  console.log('Deserialize User', user);
   done(null, user);
 })
 

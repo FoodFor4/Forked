@@ -7,6 +7,9 @@ module.exports = function($scope) {
 
     $scope.loginFacebook = function() {
       console.log("begin Facebook login process");
+      //Redirect to /auth/facebook
+      console.log(window.location);
+      window.location = '/auth/facebook';
     };
 
 }

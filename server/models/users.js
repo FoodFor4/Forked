@@ -34,10 +34,18 @@ User.findOrCreate = function (incomingFbData) {
   
   console.log("created user: ", userInfo)
 
-  return db('users').insert(userInfo).then(function(data) {
-  	userInfo.id = data[0];
-  	return userInfo;
-  });
+  return User.findByFbId(userInfo.fb_id).then(function(data) {
+    if(!data) {
+      return db('users').insert(userInfo).then(function(data) {
+        console.log("Created user data", data)
+        userInfo.id = data[0];
+        return userInfo;
+      })
+    } else {
+      console.log("Found user data", data);
+      return data;
+    }
+  })
 }
 
 User.findByFbId = function (id) {
