@@ -4,6 +4,7 @@ module.exports = function($scope, $http, Services) {
 
   $scope.welcome = 'Search Module';
   $scope.serverReply;
+  $scope.userChoice;
 
   $scope.searchInput = {
     term: '',

@@ -15,8 +15,20 @@ module.exports = function($http) {
     });
   };
 
+  var yelpSearchAdd = function( obj ) {
+    return $http({
+      method: 'POST',
+      url: '/restaurants/',
+      data: obj
+    })
+    .then (function(resp){
+      console.log('yelp serach add response: ', resp);
+    })
+  }
+
   return {
-    yelpSearchResults: yelpSearchResults
+    yelpSearchResults: yelpSearchResults,
+    yelpSearchAdd: yelpSearchAdd
   }
 
 }
