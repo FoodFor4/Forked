@@ -22,7 +22,7 @@ route.get('/', function(req, res) {
   client.search({
     term: queryData.term,
     category_filter: 'restaurants',
-    limit: 10,
+    limit: 12,
     location: queryData.location,
     sort: 0
   }).then(function(data) {
