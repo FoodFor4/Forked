@@ -18,7 +18,7 @@
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="wishlist">
         <md-content class="md-padding">
-          <h1 class="md-headline">Wishlist</h1>
+ <!--          <h1 class="md-headline">Wishlist</h1> -->
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
                 <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{visited:false}" layout-wrap>
@@ -38,7 +38,7 @@
       </md-tab>
       <md-tab label="been there">
         <md-content class="md-padding">
-          <h1 class="md-headline">Been There</h1>
+<!--           <h1 class="md-headline">Been There</h1> -->
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
                 <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{visited:true}" layout-wrap>
@@ -58,7 +58,7 @@
       </md-tab>
       <md-tab label="all">
         <md-content class="md-padding">
-          <h1 class="md-headline">All</h1>
+<!--           <h1 class="md-headline">All</h1> -->
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
                 <md-card class="cards" ng-repeat="restaurant in mainServerReply" layout-wrap>
