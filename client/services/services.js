@@ -15,12 +15,12 @@ module.exports = function($http) {
     });
   };
 
-  var yelpSearchAdd = function( obj ) {
+  var yelpSearchAdd = function( restaurantObj ) {
     console.log('yelpSearchAdd firing...');
     return $http({
       method: 'POST',
       url: '/restaurants/',
-      data: obj
+      data: restaurantObj
     })
     .then (function(resp){
       console.log('yelp serach add response: ', resp);

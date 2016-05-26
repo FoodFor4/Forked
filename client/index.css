@@ -78,3 +78,7 @@ h1{
 #cards {
   width: 20em;
 }
+
+.material-icons {
+  cursor: pointer;
+}
