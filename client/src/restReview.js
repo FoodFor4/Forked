@@ -12,7 +12,7 @@ module.exports = function ($scope, $http, Services) {
  $scope.usersReview = {
    user_rating: '',
    review: '',
-   restaurant_id: null,
+   rest_id: null,
    price: ''
  };
 

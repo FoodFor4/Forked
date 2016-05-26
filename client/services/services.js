@@ -37,6 +37,9 @@ module.exports = function($http) {
     .then (function(resp){
       console.log('addreview response: ', resp);
     })
+    .catch(function(err) {
+      console.log('submitReview error: ', err);
+    })
   }
 
   return {
