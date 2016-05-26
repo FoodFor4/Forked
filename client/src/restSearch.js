@@ -16,7 +16,7 @@ module.exports = function($scope, $http, Services) {
     var restRequest = {
       term: $scope.searchInput.term,
       location: $scope.searchInput.location
-    };
+    }
 
     Services.yelpSearchResults(restRequest)
     .then(function(resp){
