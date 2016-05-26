@@ -11,16 +11,16 @@
   <i class="material-icons" ng-click='submitSearch()'>search</i>
 
   <div id="searchResults" class="card" ng-cloak ng-model="serverReply">
-    <div class='md-padding' layout="row" flex>
-        <md-card style="width: 350px;" ng-repeat="restaurant in serverReply" flex>
+    <div class='md-padding' layout="horizontal">
+        <md-card class="cards" ng-repeat="restaurant in serverReply" layout-wrap>
           <md-card-content>
             <h3>{{restaurant.name}}</h3>
             <img src='{{restaurant.image}}'>
-            <p>{{restaurant.rating}}</p>
-            <p>{{restaurant.categories[0][0]}}</p>
+            <p>{{restaurant.yelp_rating}}</p>
+            <p>{{restaurant.categories[0]}}</p>
           </md-card-content>
           <div class="md-actions" layout="row" layout-align="end center">
-            <md-button>Add</md-button>
+            <md-button ng-model='userChoice' ng-click='sendUserChoice(restaurant)'>Add</md-button>
           </div>
         </md-card>
       </div>

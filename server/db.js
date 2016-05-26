@@ -1,10 +1,10 @@
-
 /*var knex = require('knex')({
   client: 'pg',
   connection: process.env.PG_CONNECTION_STRING,
   searchPath: 'knex,public'
 });
 */
+
 var knex = require('knex')({
   client: 'sqlite3',
   useNullAsDefault: true,
@@ -33,14 +33,14 @@ knex.ensureSchema = function () {
 
     knex.schema.hasTable('restaurants').then(function (exists) {
       if(!exists) {
-        exports.schema.createTable('restaurants', function(table) {
+        knex.schema.createTable('restaurants', function(table) {
           table.increments('rest_id').primary();
           table.string('yelp_id');
           table.string('name');
           table.string('address');
           table.string('phone', 15);
-          table.string('food_categories');
-          table.string('photo_url');
+          table.string('categories');
+          table.string('image');
           table.string('yelp_rating');          
         }).then(function (table) {
           console.log("created restaurants table")

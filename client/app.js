@@ -36,6 +36,11 @@ angular.module('myApp', [
         controller: 'SearchCtrl',
         controllerAs: 'search'
       })
+      .when('/review', {
+        templateUrl: 'views/restReview.html',
+        controller: 'ReviewCtrl',
+        controllerAs: 'review'
+      })
       .otherwise({
         redirectTo: '/'
       });
@@ -55,6 +60,6 @@ app.controller('LoginCtrl', require('./src/forkedLogin.js'));
 // Controllers to add:
 app.controller('SearchCtrl', require('./src/restSearch.js'));
 app.controller('ListCtrl', require('./src/list.js'));
-// app.controller('ListCtrl', require('./src/list.js'));
-// app.controller('FriendsCtrl', require('./src/friendList.js'));
+app.controller('ReviewCtrl', require('./src/restReview.js'));
 
+app.factory('Services', require('./services/services.js'));

@@ -1,104 +1,94 @@
-angular.module('myApp.services', [])
+'use strict';
 
-  .factory('Services', function ($http) {
-    // grabs existing user bucket list
-    var getUserRestaurantList = function() {
-      return $http({
-        method: 'GET',
-        url: // tbd
-      })
-    };
+// Services
 
-    // add additional restaurant to user bucket list
-    // input should be an object:
-    // {
-    //   name: name,
-    //   category: category,
-    //   address: address,
-    //   image: image,
-    //   rating: rating,
-    //   cost: cost,
-    // }
-    var addToUserRestaurantList = function( yelpRestaurantID ){
+module.exports = function($http) {
 
-    };
+  var yelpSearchResults = function( query ) {
+    return $http({
+      method: 'GET',
+      url: '/yelp-api/?term=' + query.term + '&location=' + query.location,
+    })
+    .then (function( resp ) {
+      console.log('Search results from yelp :', resp.data);
+      return resp.data;
+    });
+  };
 
-    // remove restaurant from user bucket list
-    var removeFromUserRestaurantList = function ( name ) {
+  var yelpSearchAdd = function( obj ) {
+    console.log('yelpSearchAdd firing...');
+    return $http({
+      method: 'POST',
+      url: '/restaurants/',
+      data: obj
+    })
+    .then (function(resp){
+      console.log('yelp serach add response: ', resp);
+    })
+  }
 
-    };
+  return {
+    yelpSearchResults: yelpSearchResults,
+    yelpSearchAdd: yelpSearchAdd,
+  }
 
-    // changes restaurant location after review
-    var switchToBeenThereList = function ( /*tbd: restaurantID*/ ) {
+}
 
-    }
+  // .factory('Services', function ($http) {
+  //   // grabs existing user bucket list
+  //   var yelpSearchResults = function( querey ) {
+  //     return $http({
+  //       method: 'GET',
+  //       url: '/yelp-api/',
+  //       data: querey
+  //     })
+  //     .then (function( resp ) {
+  //       return resp.data;
+  //     });
+  //   };
 
-    // get results from the search
-    var getSearchResults = function (  ) {
+  //   var getUserRestaurantList = function() {
+  //     return $http({
+  //       method: 'GET',
+  //       url: // tbd
+  //     })
+  //   };
 
-    }
+  //   // add additional restaurant to user bucket list
+  //   // input should be an object:
+  //   // {
+  //   //   name: name,
+  //   //   category: category,
+  //   //   address: address,
+  //   //   image: image,
+  //   //   rating: rating,
+  //   //   cost: cost,
+  //   // }
+  //   var addToUserRestaurantList = function( yelpRestaurantID ){
 
-    // adds personal review for restaurant on database
-    var submitPersonalReview = function( ) {
+  //   };
 
-    }
+  //   // remove restaurant from user bucket list
+  //   var removeFromUserRestaurantList = function ( name ) {
 
-    return {
+  //   };
 
-    };
-  })
+  //   // changes restaurant location after review
+  //   var switchToBeenThereList = function ( /*tbd: restaurantID*/ ) {
 
+  //   }
 
+  //   // get results from the search
+  //   var getSearchResults = function (  ) {
 
+  //   }
 
-// Search Feature response Limit 10:
-//   send ==> { name: inputName,
-//              location: inputLocation (default ATX)
-//            }
+  //   // adds personal review for restaurant on database
+  //   var submitPersonalReview = function( ) {
 
-//   response = [ 
-//     {
-//       name: name,
-//       rating: rating,
-//       image: image_url,
-//       phone: phone,
-//       address: location
-//     },
-//     {
-//       name: name,
-//       rating: rating,
-//       image: image_url,
-//       phone: phone,
-//       address: location
-//     },
-//     ...
-//    ];
+  //   }
 
-//  Populate List querey
-//   all meeting criteria
-
-//     // // we'll ping you with a DB querey for current restaurants via username?
-//     // // we'll anticipate the ENTIRE list of restaurants... including the fields that users will later input
-//     // // example: An array (the list) of restaurants associated with a user.
-//     //   [
-//     //     {
-//     //       name: name,
-//     //       rating: rating,
-//     //       image: image_url,
-//     //       phone: phone,
-//     //       address: location,
-//     // // // schema adds... (this will not be included when we send you back the restaurant to add...)
-//     //       visited: true,
-//     //       userReview: 140char (null or filled out...),
-//     //       priceRange: (value 1, 2, 3, 4),
-//     //       userRating: (null OR 1-5),
-//     //     },
-//     //     {
-//     //       name: name,
-//     //       rating: rating,
-//     //       image: image_url,
-//     //       phone: phone,
-//     //       address: location,
-//     //       visited: false,
-//     //     },
-//     //   ]
+  //   return {
+  //     yelpSearchResults: yelpSearchResults
+  //   };
+  // })
