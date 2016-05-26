@@ -19,17 +19,17 @@
       <md-tab label="wishlist">
         <md-content class="md-padding">
           <h1 class="md-headline">Wishlist</h1>
-            <div id="wishlist" class="card" ng-cloak ng-model="mainServerReply">
-              <div class='md-padding' layout="row" flex>
-                <md-card style="width: 350px;" ng-repeat="restaurant in mainServerReply | filter:{visited:false}" flex>
-                <md-card-content>
-                  <h3>{{restaurant.name}}</h3>
-                  <img src='{{restaurant.image}}'>
-                  <p>{{restaurant.rating}}</p>
-                  <p>{{restaurant.categories[0][0]}}</p>
+            <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
+              <div class='md-padding' layout="horizontal">
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{visited:false}" layout-wrap>
+                <md-card-content class="restaurantTile">
+                  <h2>{{restaurant.name}}</h2>
+                  <img class="restaurantImg" src='{{restaurant.image}}'>
+                  <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
+                  <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
                 </md-card-content>
                 <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button>Review</md-button>
+                  <md-button ng-model="" ng-click="">Review</md-button>
                 </div>
                 </md-card>
               </div>
@@ -39,17 +39,17 @@
       <md-tab label="been there">
         <md-content class="md-padding">
           <h1 class="md-headline">Been There</h1>
-            <div id="wishlist" class="card" ng-cloak ng-model="mainServerReply">
-              <div class='md-padding' layout="row" flex>
-                <md-card style="width: 350px;" ng-repeat="restaurant in mainServerReply | filter:{visited:true}" flex>
-                <md-card-content>
-                  <h3>{{restaurant.name}}</h3>
-                  <img src='{{restaurant.image}}'>
-                  <p>{{restaurant.rating}}</p>
-                  <p>{{restaurant.categories[0][0]}}</p>
+            <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
+              <div class='md-padding' layout="horizontal">
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{visited:true}" layout-wrap>
+                <md-card-content class="restaurantTile">
+                  <h2>{{restaurant.name}}</h2>
+                  <img class="restaurantImg" src='{{restaurant.image}}'>
+                  <p><span style="font-weight:bold">Your Rating:</span> {{restaurant.rating}}</p>
+                  <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
                 </md-card-content>
                 <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button>See Review</md-button>
+                  <md-button ng-model="" ng-click="">See Review</md-button>
                 </div>
                 </md-card>
               </div>
@@ -59,17 +59,18 @@
       <md-tab label="all">
         <md-content class="md-padding">
           <h1 class="md-headline">All</h1>
-            <div id="wishlist" class="card" ng-cloak ng-model="mainServerReply">
-              <div class='md-padding' layout="row" flex>
-                <md-card style="width: 350px;" ng-repeat="restaurant in mainServerReply" flex>
-                <md-card-content>
-                  <h3>{{restaurant.name}}</h3>
-                  <img src='{{restaurant.image}}'>
-                  <p>{{restaurant.rating}}</p>
-                  <p>{{restaurant.categories[0][0]}}</p>
+            <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
+              <div class='md-padding' layout="horizontal">
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply" layout-wrap>
+                <md-card-content class="restaurantTile">
+                  <h2>{{restaurant.name}}</h2>
+                  <img class="restaurantImg" src='{{restaurant.image}}'>
+                  <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
+                  <p><span style="font-weight:bold">Your Rating:{{restaurant.rating}}</p>
+                  <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
                 </md-card-content>
                 <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button>Details</md-button>
+                  <md-button ng-model="" ng-click="">Details</md-button>
                 </div>
                 </md-card>
               </div>

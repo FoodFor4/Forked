@@ -27,7 +27,7 @@ h1{
   .tabsdemoDynamicHeight md-content h1:first-child {
     margin-top: 0; }
 
-#wishlist #searchResults .md-padding {
+#lists .md-padding {
   flex-wrap: wrap;
   display: flex;
 }
