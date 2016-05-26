@@ -94,3 +94,7 @@ h1{
   color: white;
   font-weight: bold;
 }
+
+.material-icons {
+  cursor: pointer;
+}

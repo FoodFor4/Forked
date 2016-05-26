@@ -13,25 +13,37 @@ module.exports = function($http) {
       console.log('Search results from yelp :', resp.data);
       return resp.data;
     });
-  };
+  }
 
-  var yelpSearchAdd = function( obj ) {
+  var yelpSearchAdd = function( restaurantObj ) {
     console.log('yelpSearchAdd firing...');
     return $http({
       method: 'POST',
       url: '/restaurants/',
-      data: obj
+      data: restaurantObj
     })
     .then (function(resp){
       console.log('yelp serach add response: ', resp);
     })
   }
 
+  var submitReview = function ( userReview ) {
+    console.log('addReview firing...');
+    return $http({
+      method: 'POST',
+      url: '/reviews/',
+      data: userReview
+    })
+    .then (function(resp){
+      console.log('addreview response: ', resp);
+    })
+  }
+
   return {
     yelpSearchResults: yelpSearchResults,
     yelpSearchAdd: yelpSearchAdd,
+    submitReview: submitReview
   }
-
 }
 
   // .factory('Services', function ($http) {
