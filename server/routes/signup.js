@@ -17,7 +17,8 @@ router.post('/signup/', function(req, res) {
 				userData.hashed_password = data;
 
 				Users.create(userData).then(function(data) {
-					Users.createSession(data.user_id).then(function(sessionToken) {
+					console.log(data);
+					Users.createSession(data[0]).then(function(sessionToken) {
 						res.status(202).cookie('sessionToken', sessionToken).json(data);
 					})
 				}).catch(function (err) {
