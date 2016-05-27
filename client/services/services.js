@@ -4,6 +4,30 @@
 
 module.exports = function($http) {
 
+  var logIn = function( userObj ) {
+    console.log('logIn firing POST...');
+    return $http({
+      method: 'POST',
+      url: '/auth/login',
+      data: userObj
+    })
+    .then (function(resp){
+      console.log('logIn response: ', resp);
+    })
+  }
+
+    var signUp = function( userObj ) {
+    console.log('signUp firing POST...');
+    return $http({
+      method: 'POST',
+      url: '/auth/signup',
+      data: userObj
+    })
+    .then (function(resp){
+      console.log('signUp response: ', resp);
+    })
+  }
+
   var yelpSearchResults = function( query ) {
     return $http({
       method: 'GET',
@@ -11,6 +35,17 @@ module.exports = function($http) {
     })
     .then (function( resp ) {
       console.log('Search results from yelp :', resp.data);
+      return resp.data;
+    });
+  }
+
+    var getList = function( query ) {
+    return $http({
+      method: 'GET',
+      url: '/restaurants/all/',
+    })
+    .then (function( resp ) {
+      console.log('User results from database :', resp.data);
       return resp.data;
     });
   }
@@ -42,10 +77,16 @@ module.exports = function($http) {
     })
   }
 
+
+
+
   return {
     yelpSearchResults: yelpSearchResults,
     yelpSearchAdd: yelpSearchAdd,
-    submitReview: submitReview
+    submitReview: submitReview,
+    getList: getList,
+    logIn: logIn,
+    signUp: signUp
   }
 }
 

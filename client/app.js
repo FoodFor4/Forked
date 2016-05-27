@@ -31,6 +31,11 @@ angular.module('myApp', [
         controller: 'LoginCtrl',
         controllerAs: 'login'
       })
+      .when('/signup', {
+        templateUrl: 'views/forkedSignup.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .when('/search', {
         templateUrl: 'views/restSearch.html',
         controller: 'SearchCtrl',
