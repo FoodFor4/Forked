@@ -8,8 +8,8 @@ var cookieParser = require('cookie-parser');
 var yelpApi = require('./routes/yelp')
 //var facebookLogin = require('./routes/facebook')
 
-var login = require('./routers/login'),
-	signup = require('./routers/signup');
+var login = require('./routes/login'),
+	signup = require('./routes/signup');
 
 var reviewRoutes = require('./api_routes/reviews')
 var restRoutes = require('./api_routes/restaurants')
