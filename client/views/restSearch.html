@@ -15,7 +15,7 @@
         <md-card class="cards" ng-repeat="restaurant in serverReply" layout-wrap>
           <md-card-content class="restaurantTile">
             <h2>{{restaurant.name}}</h2>
-            <img class="restaurantImg"src='{{restaurant.image}}'>
+            <img class="restaurantImg" src='{{restaurant.image}}'>
             <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
             <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
           </md-card-content>
