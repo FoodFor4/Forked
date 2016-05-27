@@ -2,10 +2,10 @@
 
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 
-module.exports = function($scope, $http /*SeverService*/) {
+module.exports = function($scope, $http, Services) {
 
 
-  $scope.welcomeMain = 'Main Module';
+$scope.welcomeMain = 'Main Module';
 
  $scope.searchInput = {
     term: '',
@@ -30,6 +30,35 @@ module.exports = function($scope, $http /*SeverService*/) {
    // return userSearch( restRequest )();
   }
 
+  // restSearch controller code
+  $scope.serverReply;
+  $scope.toAdd;
+
+  //value bound to Restaurant/City input on restSearch.html
+  $scope.searchInput = {
+    term: '',
+    location: 'Austin'
+  }
+
+  $scope.submitSearch = function(){
+    var restRequest = {
+      term: $scope.searchInput.term,
+      location: $scope.searchInput.location
+    }
+
+    Services.yelpSearchResults(restRequest)
+    .then(function(resp){
+      $scope.serverReply = resp;
+      console.log('Populating page with yelp results: ', resp);
+    })
+    console.log('Submitted search criterion: ', restRequest);
+  }
+
+  $scope.addToRestaurants = function(restaurant) {
+    console.log('addToRestaurants fired:', restaurant);
+    Services.yelpSearchAdd(restaurant);
+  }
+  //searchcontroller code
 
 
 $scope.mainServerReply = [$scope.Franklin,$scope.Perrys,$scope.Uchi,$scope.Tacodeli,$scope.SalvationPizza,$scope.GussWorldFamousFriedChicken,$scope.KerbeyLaneCafe,$scope.MattsFamousElRancho,$scope.PhoPlease, ];
