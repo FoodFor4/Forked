@@ -72,7 +72,6 @@ $scope.welcomeMain = 'Main Module';
     console.log("go to see existing review page for selected restaurant");
   }
 
-<<<<<<< HEAD
   // if ($scope.docCookies.getItem('sessionToken') !== null) {
   //    $scope.mainServerReply = [];
   //    Services.getList()
