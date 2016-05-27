@@ -3,46 +3,37 @@ var db = require('../db');
 
 var User = module.exports
 
-User.findOrCreate = function (incomingFbData) {
-// incomingFbData = { id: '1013808918710063',
-//  username: undefined,
-//  displayName: 'Zackery Perryman',
-//  name: 
-//   { familyName: undefined,
-//     givenName: undefined,
-//     middleName: undefined },
-//  gender: undefined,
-//  profileUrl: undefined,
-//  provider: 'facebook',
-//  _raw: '{"name":"Zackery Perryman","id":"1013808918710063"}',
-//  _json: { name: 'Zackery Perryman', id: '1013808918710063' } }
-
-//User.create = function (incomingFbData) {
-
-  var attribs = Object.assign({}, incomingFbData)
-
-  //map fb_data into what we want and save in userInfo
-  //fb data is not a promise
-  var userInfo = {
-    fb_id: attribs.facebookId,
-    fb_name: attribs.facebookName
-  };
-  // var userInfo = {};
-
-  // userInfo.fb_id = attribs.id;
-  // userInfo.fb_name = attribs.displayName; 
-  
-  console.log("created user: ", userInfo)
-
-  return db('users').insert(userInfo).then(function(data) {
-  	userInfo.id = data[0];
-  	return userInfo;
-  });
+User.create = function(userObj) {
+  return db.users.insert(userObj).then(function(data) {
+    //Assume data back is the inserted object?
+    return data;
+  })
 }
 
-User.findByFbId = function (id) {
-  return db('users').where({ fb_id: id }).limit(1)
-    .then(function (rows) {
-      return rows[0]
-    })
+User.createSession = function(userId) {
+  //We just hope this works honestly.
+  var sessionToken = uuid.v4();
+  return db.sessions.insert({user_id: userId, sessionToken}).then(function(data) {
+    return sessionToken;
+  })
+}
+
+//Find functions return first result
+//Implied to be only result
+User.findByName = function(name) {
+  return db.user.where({user_name: name}).then(function(data) {
+    return data[0];
+  })
+}
+
+User.findById = function(id) {
+  return db.users.where({user_id: id}).then(function(data) {
+    return data[0];
+  })
+}
+
+User.findSessionByToken = function(token) {
+  return db.users.where({sessionToken: token}).then(function(data) {
+    return data[0];
+  })
 }
