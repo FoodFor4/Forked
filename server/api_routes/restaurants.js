@@ -21,6 +21,14 @@ routes.get('/', function(req, res) {
 	})
 })
 
+routes.get('/all/', function(req, res) {
+	restaurants.findAllAttachedToUserId(req.sessionInfo.user_id).then(function(data) {
+		res.status(200).json(data);
+	}).catch(function(err) {
+		res.status(500).send('Server Error');
+	})
+})
+
 routes.post('/', bodyParser.json(), function(req, res) {
 	restaurants.findOrCreate(req.body).then(function(data) {
 		console.log('restaurants post', data);

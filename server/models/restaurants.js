@@ -13,7 +13,7 @@ var Restaurants = module.exports
   //    address: dat.location.display_address
   // }
 
-Restaurants.findOrCreate = function (selectedRestaurantData) {
+Restaurants.findOrCreate = function (selectedRestaurantData, userId) {
   
   var restaurantInfo = Object.assign({}, selectedRestaurantData);
 
@@ -21,12 +21,17 @@ Restaurants.findOrCreate = function (selectedRestaurantData) {
 
   Restaurants.find(restaurantInfo).then(function(data) {
     if(data) {
-      return data
+      return db('buckets').insert({rest_id: data.rest_id, user_id: userId, category: 'wishlist'}).then(function() {
+        return data
+      })
     } else {
       return  db('restaurants').insert(restaurantInfo)
         .then(function (result) {
-          console.log('findOrCreate called on ', restaurantInfo, 'returning', result);      
-          return result;
+          console.log('findOrCreate called on ', restaurantInfo, 'returning', result);
+
+          return db('buckets').insert({rest_id: data[0], user_id: userId, category: 'wishlist'}).then(function() {
+            return result
+          })
         })
     }
   })
@@ -49,4 +54,14 @@ Restaurants.find = function(restaurantData) {
     console.log('find called on', restaurantInfo, 'returning', result);
     return result;
   })
+}
+
+Restaurants.findAllAttachedToUserId = function(userId) {
+  return db('buckets')
+    .select('*')
+    .leftOuterJoin('restaurants', 'buckets.rest_id', 'restaurants.rest_id')
+    .where({user_id: userId})
+    .then(function (data) {
+      return data;
+    });
 }

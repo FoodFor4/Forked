@@ -21,4 +21,3 @@ Buckets.getBucketByUserId = function (user_id) {
       return rows
     })
 }
-
