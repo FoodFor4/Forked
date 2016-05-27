@@ -4,7 +4,7 @@ var app = express();
 var db = require('./db')
 
 var yelpApi = require('./routes/yelp')
-var facebookLogin = require('./routes/facebook')
+//var facebookLogin = require('./routes/facebook')
 
 var reviewRoutes = require('./api_routes/reviews')
 var restRoutes = require('./api_routes/restaurants')
@@ -20,7 +20,7 @@ app.get('/js/app-bundle.js', browserify('./client/app.js', { external: shared })
 // Router attachments
 
 app.use('/yelp-api', yelpApi);
-app.use('/auth', facebookLogin);
+//app.use('/auth', facebookLogin);
 
 app.use('/reviews', reviewRoutes);
 app.use('/restaurants', restRoutes);
