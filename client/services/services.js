@@ -13,7 +13,7 @@ module.exports = function($http) {
       console.log('Search results from yelp :', resp.data);
       return resp.data;
     });
-  };
+  }
 
   var yelpSearchAdd = function( restaurantObj ) {
     console.log('yelpSearchAdd firing...');
@@ -27,11 +27,23 @@ module.exports = function($http) {
     })
   }
 
+  var submitReview = function ( userReview ) {
+    console.log('addReview firing...');
+    return $http({
+      method: 'POST',
+      url: '/reviews/',
+      data: userReview
+    })
+    .then (function(resp){
+      console.log('addreview response: ', resp);
+    })
+  }
+
   return {
     yelpSearchResults: yelpSearchResults,
     yelpSearchAdd: yelpSearchAdd,
+    submitReview: submitReview
   }
-
 }
 
   // .factory('Services', function ($http) {

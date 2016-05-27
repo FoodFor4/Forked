@@ -27,9 +27,10 @@ h1{
   .tabsdemoDynamicHeight md-content h1:first-child {
     margin-top: 0; }
 
-#wishlist #searchResults .md-padding {
+#lists .md-padding {
   flex-wrap: wrap;
   display: flex;
+  background-color: #dcdcdc;
 }
 
 #searchResults .md-padding {
@@ -38,7 +39,7 @@ h1{
 }
 
 #logo {
-  width: 325px
+  width: 375px
 }
 
 #banner {
@@ -93,10 +94,6 @@ h1{
   background-color: #2380E2;
   color: white;
   font-weight: bold;
-}
-
-.material-icons {
-  cursor: pointer;
 }
 
 .material-icons {

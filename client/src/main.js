@@ -43,7 +43,7 @@ $scope.Franklin = {
    address: ["900 E 11th St",
            "East Austin",
            "Austin, TX 78702"],
-   categories: [['Barbecue', 'bbq']],
+   categories: ['Barbecue', 'bbq'],
    visited: false
  };
 
@@ -57,7 +57,7 @@ $scope.Perrys = {
                     "Ste 110",
                     "Downtown",
                     "Austin, TX 78701"],
-   categories: [['Steakhouses', 'Seafood']],
+   categories: ['Steakhouses', 'Seafood'],
    visited: false
  };
 
@@ -70,7 +70,7 @@ $scope.Uchi = {
    address: ["801 S Lamar Blvd",
                     "South Lamar District",
                     "Austin, TX 78704"],
-   categories: [['Sushi Bars', 'Japanese']],
+   categories: ['Sushi Bars', 'Japanese'],
    visited: false
  };
 
@@ -83,7 +83,7 @@ $scope.Tacodeli = {
                     "Ste B",
                     "Barton Hills",
                     "Austin, TX 78746"],
-   categories: [['Mexican', 'Vegetarian']],
+   categories: ['Mexican', 'Vegetarian'],
    visited: false
  };
 
@@ -95,7 +95,7 @@ $scope.SalvationPizza = {
    address: ["624 W 34th St",
                     "University of Texas",
                     "Austin, TX 78705"],
-   categories: [['Pizza']],
+   categories: ['Pizza'],
    visited: true
  };
 
@@ -107,7 +107,7 @@ $scope.GussWorldFamousFriedChicken = {
    address: ["117 San Jacinto",
                     "Downtown",
                     "Austin, TX 78701"],
-   categories: [['Southern']],
+   categories: ['Southern'],
    visited: true
  };
 
@@ -119,7 +119,7 @@ $scope.KerbeyLaneCafe = {
    address: ["3704 Kerbey Ln",
                     "Austin, TX 78731"
             ],
-   categories: [['Breakfast & Brunch']],
+   categories: ['Breakfast & Brunch'],
    visited: true
  };
 
@@ -132,7 +132,7 @@ $scope.KerbeyLaneCafe = {
                     "South Lamar District",
                     "Austin, TX 78704"
             ],
-   categories: [['Mexican']],
+   categories: ['Mexican'],
    visited: true
  };
 
@@ -146,7 +146,7 @@ $scope.PhoPlease = {
                     "Oltorf/East Riverside",
                     "Austin, TX 78741"
             ],
-   categories: [['Vietnamese']],
+   categories: ['Vietnamese'],
    visited: true
  };
 
