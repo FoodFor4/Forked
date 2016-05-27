@@ -1,19 +1,8 @@
 <div id="banner">
-  <img id="logo" src="../assets/forked-logo-with-fork-exp.jpg">
 </div>
 <div class="jumbotron" ng-controller="MainCtrl">
-  <h1>{{welcomeMain}}</h1>
-    <md-input-container>
-        <label>Restaurant: </label>
-        <input ng-model="searchInput.term">
-  </md-input-container>
-  <md-input-container>
-        <label>City: </label>
-        <input ng-model="searchInput.location">
-  </md-input-container>
-  <i class="material-icons" ng-click='submitSearch()'>search</i>
-
-<div ng-cloak>
+  <img id="logo" src="../assets/forked-logo-with-fork-exp.jpg">
+  <div ng-cloak>
   <md-content>
     <md-tabs md-dynamic-height md-border-bottom>
       <md-tab label="wishlist">
@@ -77,10 +66,42 @@
             </div>
         </md-content>
       </md-tab>
-      <md-tab label="friends">
+      <md-tab label="search">
         <md-content class="md-padding">
-          <h1 class="md-headline">Friends</h1>
-          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+<!--           <md-input-container>
+            <label>Restaurant: </label>
+            <input ng-model="searchInput.term">
+          </md-input-container>
+          <md-input-container>
+            <label>City: </label>
+            <input ng-model="searchInput.location">
+          </md-input-container>
+          <i class="material-icons" ng-click='submitSearch()'>search</i> -->
+          <h1>{{welcome}}</h1>
+          <md-input-container>
+            <label>Restaurant: </label>
+            <input ng-model="searchInput.term">
+          </md-input-container>
+          <md-input-container>
+            <label>City: </label>
+            <input ng-model="searchInput.location">
+          </md-input-container>
+          <i class="material-icons" ng-click='submitSearch()'>search</i>
+          <div id="searchResults" class="card" ng-cloak ng-model="serverReply">
+            <div class='md-padding' layout="horizontal">
+              <md-card class="cards" ng-repeat="restaurant in serverReply" layout-wrap>
+                <md-card-content class="restaurantTile">
+                  <h2>{{restaurant.name}}</h2>
+                  <img class="restaurantImg" src='{{restaurant.image}}'>
+                  <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
+                  <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}} </p>
+                </md-card-content>
+                <div class="md-actions" layout="row" layout-align="end center">
+                  <md-button class="addBtn" ng-model='userChoice' ng-click='addToRestaurants(restaurant)'>+ Wishlist</md-button>
+                </div>
+              </md-card>
+            </div>
+          </div>
         </md-content>
       </md-tab>
     </md-tabs>
