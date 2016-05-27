@@ -14,6 +14,13 @@ var login = require('./routes/login'),
 var reviewRoutes = require('./api_routes/reviews')
 var restRoutes = require('./api_routes/restaurants')
 
+app.use(express.static('client/'));
+
+//browersify which injects all dependencies into index.html
+var shared = ['angular'];
+app.get('/js/vendor-bundle.js', browserify(shared));
+app.get('/js/app-bundle.js', browserify('./client/app.js', { external: shared }));
+
 //Homebrew authentication middleware
 app.use(cookieParser());
 
@@ -22,6 +29,8 @@ app.use(cookieParser());
 //How horrifying.
 var Users = require('./models/users');
 app.use(function(req, res, next) {
+	console.log(req.url);
+	// next();
 	if(req.cookies.sessionToken) {
 		Users.findSessionByToken(req.cookies.sessionToken).then(function(data) {
 			if(data) {
@@ -48,12 +57,6 @@ app.use('/auth/', login);
 app.use('/auth/', signup);
 
 //route to your index.html
-app.use(express.static('client/'));
-
-//browersify which injects all dependencies into index.html
-var shared = ['angular'];
-app.get('/js/vendor-bundle.js', browserify(shared));
-app.get('/js/app-bundle.js', browserify('./client/app.js', { external: shared }));
 
 // Router attachments
 
