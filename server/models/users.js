@@ -31,3 +31,9 @@ User.findById = function(id) {
     return data[0];
   })
 }
+
+User.findSessionByToken = function(token) {
+  return db.users.where({sessionToken: token}).then(function(data) {
+    return data[0];
+  })
+}
