@@ -19,7 +19,7 @@ router.post('/signup/', function(req, res) {
 				Users.create(userData).then(function(data) {
 					users.createSession(data.user_id).then(function(sessionToken) {
 						res.status(202).cookie('sessionToken', sessionToken).json(data);
-					}
+					})
 				}).catch(function (err) {
 					console.log("Create user error", err);
 					res.status(500).send('Unknown error occured.')
