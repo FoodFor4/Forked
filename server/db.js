@@ -23,8 +23,10 @@ knex.ensureSchema = function () {
       if(!exists) {
         knex.schema.createTable('users', function(table) {
           table.increments('user_id').primary();
-          table.string('fb_name');
-          table.string('fb_id');
+          table.string('user_name');
+          table.string('hashed_password');
+          //table.string('fb_name');
+          //table.string('fb_id');
         }).then(function (table) {
           console.log("created users table")
         })
@@ -51,7 +53,7 @@ knex.ensureSchema = function () {
     knex.schema.hasTable('buckets').then(function (exists) {
       if(!exists) {
         knex.schema.createTable('buckets', function(table) {
-          table.increments();
+          table.increments('bucket_id').primary();
           table.integer('user_id');
           table.integer('rest_id');
           table.foreign('user_id').references('users.user_id');
@@ -66,7 +68,7 @@ knex.ensureSchema = function () {
     knex.schema.hasTable('reviews').then(function (exists) {
       if(!exists) {
         knex.schema.createTable('reviews', function(table) {
-          table.increments();
+          table.increments('id').primary();
           table.integer('user_id');
           table.integer('rest_id');
           table.foreign('user_id').references('users.user_id');
@@ -76,6 +78,19 @@ knex.ensureSchema = function () {
           table.string('price');
         }).then(function (table) {
           console.log("created reviews table")
+        })
+      }
+    }),
+
+    knex.schema.hasTable('sessions').then(function (exists) {
+      if(!exists) {
+        knex.schema.createTable('sessions', function(table) {
+          table.increments();
+          table.integer('user_id');
+          table.string('sessionToken');
+          table.foreign('user_id').references('users.user_id');
+        }).then(function (table) {
+          console.log("created sessions table")
         })
       }
     })

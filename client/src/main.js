@@ -60,6 +60,13 @@ $scope.welcomeMain = 'Main Module';
   }
   //searchcontroller code
 
+  $scope.writeReview = function() {
+    console.log("go to create a review page for selected restaurant");
+  }
+
+  $scope.seeReview = function() {
+    console.log("go to see existing review page for selected restaurant");
+  }
 
 $scope.mainServerReply = [$scope.Franklin,$scope.Perrys,$scope.Uchi,$scope.Tacodeli,$scope.SalvationPizza,$scope.GussWorldFamousFriedChicken,$scope.KerbeyLaneCafe,$scope.MattsFamousElRancho,$scope.PhoPlease, ];
 
