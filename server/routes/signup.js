@@ -1,7 +1,7 @@
 var router = require('express').Router();
 var Users = require('../models/users')
 
-var bcrypt = require('bcrypt')
+var bcrypt = require('bcrypt-nodejs')
 
 router.post('/signup/', function(req, res) {
 	//Create a user if it doesn't exist
@@ -12,12 +12,12 @@ router.post('/signup/', function(req, res) {
 		}
 		else {
 			var userData = Object.assign({}, req.body);
-			userData.hashed_password = bcrypt.hash(userData.password, null, function(hashed_password) {
+			userData.hashed_password = bcrypt.hash(userData.password, null, null, function(err, data) {
 				delete userData.password;
-				userData.hashed_password = hashed_password;
+				userData.hashed_password = data;
 
 				Users.create(userData).then(function(data) {
-					users.createSession(data.user_id).then(function(sessionToken) {
+					Users.createSession(data.user_id).then(function(sessionToken) {
 						res.status(202).cookie('sessionToken', sessionToken).json(data);
 					})
 				}).catch(function (err) {

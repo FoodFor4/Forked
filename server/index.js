@@ -4,6 +4,7 @@ var app = express();
 var db = require('./db')
 
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 
 var yelpApi = require('./routes/yelp')
 //var facebookLogin = require('./routes/facebook')
@@ -27,6 +28,11 @@ app.use(cookieParser());
 //We redirect until the user has an sessionToken.
 //We don't even check it.
 //How horrifying.
+
+app.use('/auth/', bodyParser.json());
+app.use('/auth/', login);
+app.use('/auth/', signup);
+
 var Users = require('./models/users');
 app.use(function(req, res, next) {
 	console.log(req.url);
@@ -53,8 +59,6 @@ app.use(function(req, res, next) {
 	}
 })
 
-app.use('/auth/', login);
-app.use('/auth/', signup);
 
 //route to your index.html
 

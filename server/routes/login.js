@@ -1,17 +1,16 @@
 var router = require('express').Router();
 var Users = require('../models/users')
 
-var bcrypt = require('bcrypt')
-var uuid = require('uuid');
+var bcrypt = require('bcrypt-nodejs')
 
 router.post('/login/', function(req, res) {
-	Users.findByName(req.body.name).then(function(data) {
+	Users.findByName(req.body.username).then(function(data) {
 		if(data) {
-			bcrypt.compare(req.body.password, data.hashed_password, function(result) {
+			bcrypt.compare(req.body.password, data.hashed_password, function(err, result) {
 				if(result) {
 					//We matched
-					users.createSession(data.user_id).then(function(sessionToken) {
-						res.status(200).cookie('sessionToken', sessionToken);
+					Users.createSession(data.user_id).then(function(sessionToken) {
+						res.status(200).cookie('sessionToken', sessionToken).json({user_id: data.user_id});
 					})
 				}
 				else {
@@ -22,6 +21,8 @@ router.post('/login/', function(req, res) {
 		} else {
 			res.status(400).send("User doesn't exist");
 		}
+	}).catch(function(err) {
+		console.log('Login Error', err);
 	})
 })
 
