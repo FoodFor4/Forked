@@ -10,6 +10,7 @@ router.post('/login/', function(req, res) {
 				if(result) {
 					//We matched
 					Users.createSession(data.user_id).then(function(sessionToken) {
+						// console.log(data);
 						res.status(200).cookie('sessionToken', sessionToken).json({user_id: data.user_id});
 					})
 				}
