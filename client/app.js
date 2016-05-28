@@ -59,7 +59,6 @@ app.controller('LoginCtrl', require('./src/forkedLogin.js'));
 
 // Controllers to add:
 app.controller('SearchCtrl', require('./src/restSearch.js'));
-app.controller('ListCtrl', require('./src/list.js'));
 app.controller('ReviewCtrl', require('./src/restReview.js'));
 
 app.factory('Services', require('./services/services.js'));

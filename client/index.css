@@ -60,6 +60,11 @@ h1{
     top:150px;
 }
 
+#popupContainer {
+  position: relative;
+  width: 400px;
+}
+
 .reviewBox{
   margin: auto;
   text-align: center;
@@ -98,4 +103,27 @@ h1{
 
 .material-icons {
   cursor: pointer;
+}
+
+.dialogdemoBasicUsage #popupContainer {
+  position: relative;
+}
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px;
+}
+
+.dialogdemoBasicUsage button {
+  width: 200px;
+}
+
+.dialogdemoBasicUsage div#status {
+  color: #c60008;
 }

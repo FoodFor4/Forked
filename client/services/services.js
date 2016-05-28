@@ -5,6 +5,7 @@
 module.exports = function($http) {
 
   var yelpSearchResults = function( query ) {
+    console.log('yelpSearchResults firing w/: ', query);
     return $http({
       method: 'GET',
       url: '/yelp-api/?term=' + query.term + '&location=' + query.location,
