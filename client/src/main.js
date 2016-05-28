@@ -60,7 +60,11 @@ $scope.welcomeMain = 'Main Module';
 
   $scope.addToRestaurants = function(restaurant) {
     console.log('addToRestaurants fired:', restaurant);
-    Services.yelpSearchAdd(restaurant);
+    Services.yelpSearchAdd(restaurant)
+      .then(function(resp){
+        console.log("refreshing main page after add", resp);
+        $scope.init();
+      });
   }
   //searchcontroller code
 
@@ -71,21 +75,6 @@ $scope.welcomeMain = 'Main Module';
   $scope.seeReview = function() {
     console.log("go to see existing review page for selected restaurant");
   }
-
-<<<<<<< HEAD
-  // if ($scope.docCookies.getItem('sessionToken') !== null) {
-  //    $scope.mainServerReply = [];
-  //    Services.getList()
-  //    .then (function( resp ) {
-  //      console.log('Array of restaurants received from database :', resp.data);
-  //       $scope.mainServerReply = resp.data;
-  //       return resp.data;
-  //     });
-  // } else {
-  //   console.log("you're not logged in. dummy data loaded");
-    $scope.mainServerReply = [$scope.Franklin,$scope.Perrys,$scope.Uchi,$scope.Tacodeli,$scope.SalvationPizza,$scope.GussWorldFamousFriedChicken,$scope.KerbeyLaneCafe,$scope.MattsFamousElRancho,$scope.PhoPlease ];
-  // }
-
 
   //docCookies is a library that implements several methods for dealing with cookies
   $scope.docCookies = {
@@ -127,6 +116,24 @@ $scope.welcomeMain = 'Main Module';
       return aKeys;
     }
   };
+  $scope.init = function () {
+    console.log("init function fired to show/refresh main page after login or new restaurant add");
+    if ($scope.docCookies.getItem('sessionToken') !== null) {
+       $scope.mainServerReply = [];
+       Services.getList()
+       .then (function( resp ) {
+         console.log('Array of restaurants received from database :', resp.data);
+          $scope.mainServerReply = resp.data;
+          return resp.data;
+        });
+    } else {
+      console.log("you're not logged in. dummy data loaded");
+      $scope.mainServerReply = [$scope.Franklin,$scope.Perrys,$scope.Uchi,$scope.Tacodeli,$scope.SalvationPizza,$scope.GussWorldFamousFriedChicken,$scope.KerbeyLaneCafe,$scope.MattsFamousElRancho,$scope.PhoPlease ];
+    }
+  };
+
+  $scope.init();
+
 
 
 
