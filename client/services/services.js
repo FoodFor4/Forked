@@ -42,11 +42,14 @@ module.exports = function($http) {
     var getList = function( query ) {
     return $http({
       method: 'GET',
-      url: '/restaurants/all/',
+      url: '/restaurants/all/'
     })
     .then (function( resp ) {
       console.log('User results from database :', resp.data);
       return resp.data;
+    })
+    .catch(function (error) {
+      console.error(error);
     });
   }
 
