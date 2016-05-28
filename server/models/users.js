@@ -35,7 +35,7 @@ User.findById = function(id) {
 }
 
 User.findSessionByToken = function(token) {
-  return db('users').where({sessionToken: token}).then(function(data) {
+  return db('sessions').where({sessionToken: token}).then(function(data) {
     return data[0];
   })
 }

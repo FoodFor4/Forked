@@ -36,15 +36,18 @@ app.use('/auth/', signup);
 var Users = require('./models/users');
 app.use(function(req, res, next) {
 	console.log(req.url);
+	console.log(req.cookies)
 	// next();
 	if(req.cookies.sessionToken) {
 		Users.findSessionByToken(req.cookies.sessionToken).then(function(data) {
 			if(data) {
-				//If we see it, it is valid.
+				console.log(data);
+				req.sessionInfo = data;
 				next();
 			} else {
 				//We got a falsy value (undefined/null) so it isn't valid.
-				res.redirect('/#/login');
+				console.log(data)
+				res.redirect('/');
 			}
 		}).catch(function(err) {
 			//Internal server error
@@ -55,7 +58,7 @@ app.use(function(req, res, next) {
 		next();
 	} else {
 		//Redirect a wayward user to / on the server, and /#/login on the client side routing.
-		res.redirect('/#/login');
+		res.redirect('/');
 	}
 })
 

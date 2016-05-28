@@ -13,7 +13,7 @@ var bodyParser = require('body-parser')
 routes.get('/', function(req, res) {
 	var arguments = url.parse(req.url, true).query;
 
-	reviews.getUserReview(arguments.user_id, arguments.rest_id)
+	reviews.getUserReview(req.sessionInfo.user_id, arguments.rest_id)
 		.then(function(data) {
 			console.log('Reviews get', data);
 			res.status(200).json(data);
@@ -26,6 +26,7 @@ routes.get('/', function(req, res) {
 
 routes.post('/', bodyParser.json(), function(req, res) {
 	var args = req.body;
+	args.user_id = req.sessionInfo.user_id;
 
 	reviews.addNew(args).then(function(data) {
 		console.log('Reviews post', data);

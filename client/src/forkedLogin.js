@@ -1,13 +1,38 @@
 'use strict';
 
 
-module.exports = function($scope) {
+module.exports = function($scope, $location, $window, Services) {
 
     $scope.welcomeLogin = 'Login Module';
 
-    $scope.loginFacebook = function() {
-      console.log("begin Facebook login process");
+
+    $scope.user = {};
+
+    $scope.login = function () {
+      Services.logIn($scope.user)
+         .then(function (token) {
+           $window.localStorage.setItem('forked', token);
+           $location.path('/main');
+         })
+         .catch(function (error) {
+           console.error(error);
+         });
     };
+
+    $scope.signup = function () {
+      Services.signUp($scope.user)
+         .then(function (token) {
+           $window.localStorage.setItem('forked', token);
+           $location.path('/main');
+         })
+         .catch(function (error) {
+           console.error(error);
+         });
+    };
+
+
+
+
 
 }
 
