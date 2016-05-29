@@ -41,12 +41,12 @@ app.use(function(req, res, next) {
 	if(req.cookies.sessionToken) {
 		Users.findSessionByToken(req.cookies.sessionToken).then(function(data) {
 			if(data) {
-				console.log(data);
+				//console.log(data);
 				req.sessionInfo = data;
 				next();
 			} else {
 				//We got a falsy value (undefined/null) so it isn't valid.
-				console.log(data)
+				//console.log(data)
 				res.redirect('/');
 			}
 		}).catch(function(err) {
