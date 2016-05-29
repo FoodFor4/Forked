@@ -11,10 +11,9 @@ var Reviews = module.exports
 // 	price: price
 // }
 
-Reviews.addNew = function (restaurantReviewData, userId) {
+Reviews.addNew = function (restaurantReviewData) {
 	
 	var reviewInfo = Object.assign({}, restaurantReviewData);
-  reviewInfo.user_id = userId;
 
 	console.log("created review with data: ", reviewInfo)
 
@@ -22,7 +21,7 @@ Reviews.addNew = function (restaurantReviewData, userId) {
     .then(function (result) {
     console.log('addNew called on ', restaurantReviewData, 'returning', result);
     
-    return db('buckets').where({rest_id: restaurantReviewData.rest_id}).update({category: 'beenThere'}).then(function(data){ return data; });
+    return db('buckets').where({rest_id: restaurantReviewData.rest_id, user_id: restaurantReviewData.user_id}).update({category: 'beenThere'}).then(function(data){ return data; });
   })
 }
 
