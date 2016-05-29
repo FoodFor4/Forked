@@ -10,7 +10,7 @@
  <!--          <h1 class="md-headline">Wishlist</h1> -->
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
-                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{visited:false}" layout-wrap>
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{category:wishlist}" layout-wrap>
                 <md-card-content class="restaurantTile">
                   <h2>{{restaurant.name}}</h2>
                   <img class="restaurantImg" src='{{restaurant.image}}'>
@@ -30,7 +30,7 @@
 <!--           <h1 class="md-headline">Been There</h1> -->
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
-                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{visited:true}" layout-wrap>
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{category:reviewed}" layout-wrap>
                 <md-card-content class="restaurantTile">
                   <h2>{{restaurant.name}}</h2>
                   <img class="restaurantImg" src='{{restaurant.image}}'>

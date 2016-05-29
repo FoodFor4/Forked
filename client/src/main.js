@@ -122,9 +122,9 @@ $scope.welcomeMain = 'Main Module';
        $scope.mainServerReply = [];
        Services.getList()
        .then (function( resp ) {
-         console.log('Array of restaurants received from database :', resp.data);
-          $scope.mainServerReply = resp.data;
-          return resp.data;
+         console.log('Array of restaurants received from database :', resp);
+          $scope.mainServerReply = resp;
+          return resp;
         });
     } else {
       console.log("you're not logged in. dummy data loaded");

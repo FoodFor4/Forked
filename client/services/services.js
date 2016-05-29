@@ -45,7 +45,7 @@ module.exports = function($http) {
       url: '/restaurants/all/'
     })
     .then (function( resp ) {
-      console.log('User results from database :', resp.data);
+      console.log('User results from database :', resp);
       return resp.data;
     })
     .catch(function (error) {
