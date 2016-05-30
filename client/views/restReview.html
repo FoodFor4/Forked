@@ -6,7 +6,7 @@
       <md-select ng-model="selectedRating" md-selected-text="getSelectedRating()">
         <md-optgroup>
           <md-option ng-value="rating" ng-repeat="rating in ratings">{{rating}}</md-option>
-         </md-optgroup>
+        </md-optgroup>
       </md-select>
     </md-input-container>
     <md-input-container>
@@ -14,7 +14,7 @@
       <md-select ng-model="selectedPrice" md-selected-text="getSelectedPrice()">
         <md-optgroup>
           <md-option ng-value="price" ng-repeat="price in prices">{{price}}</md-option>
-         </md-optgroup>
+        </md-optgroup>
       </md-select>
     </md-input-container>
   </div>
@@ -23,3 +23,4 @@
     <md-button class="md-raised" ng-click="submitReview()">Submit</md-button>
   </div>
 </div>
+

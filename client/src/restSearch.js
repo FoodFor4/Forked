@@ -12,17 +12,17 @@ module.exports = function($scope, $http, Services) {
     location: 'Austin'
   }
 
-  $scope.submitSearch = function(){
+  $scope.submitSearch = function() {
     var restRequest = {
       term: $scope.searchInput.term,
       location: $scope.searchInput.location
     }
 
     Services.yelpSearchResults(restRequest)
-    .then(function(resp){
-      $scope.serverReply = resp;
-      console.log('Populating page with yelp results: ', resp);
-    })
+      .then(function(resp) {
+        $scope.serverReply = resp;
+        console.log('Populating page with yelp results: ', resp);
+      })
     console.log('Submitted search criterion: ', restRequest);
   }
 

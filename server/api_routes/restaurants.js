@@ -30,8 +30,8 @@ routes.get('/all/', function(req, res) {
 })
 
 routes.post('/', bodyParser.json(), function(req, res) {
-	restaurants.findOrCreate(req.body).then(function(data) {
-		console.log('restaurants post', data);
+	restaurants.findOrCreate(req.body, req.sessionInfo.user_id).then(function(data) {
+		// console.log('restaurants post', data);
 		res.status(202).json(data);
 	}).catch(function(err) {
 		console.log('restaurants post err', err);

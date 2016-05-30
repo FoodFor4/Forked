@@ -3,78 +3,72 @@
 <div class="jumbotron" ng-controller="MainCtrl">
   <img id="logo" src="../assets/forked-logo-with-fork-exp.jpg">
   <div ng-cloak>
-  <md-content>
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="wishlist">
-        <md-content class="md-padding">
- <!--          <h1 class="md-headline">Wishlist</h1> -->
+    <md-content>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="wishlist">
+          <md-content class="md-padding">
+            <!--          <h1 class="md-headline">Wishlist</h1> -->
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
-                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{visited:false}" layout-wrap>
-                <md-card-content class="restaurantTile">
-                  <h2>{{restaurant.name}}</h2>
-                  <img class="restaurantImg" src='{{restaurant.image}}'>
-                  <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
-                  <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
-                </md-card-content>
-                <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button ng-click="showAdvanced($event)">Review</md-button>
-                </div>
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{category:wishlist}" layout-wrap>
+                  <md-card-content class="restaurantTile">
+                    <h2>{{restaurant.name}}</h2>
+                    <img class="restaurantImg" src='{{restaurant.image}}'>
+                    <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
+                    <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
+                  </md-card-content>
+                  <div class="md-actions" layout="row" layout-align="center">
+                    <md-button ng-click="showAdvanced($event)">Review</md-button>
+                  </div>
                 </md-card>
               </div>
             </div>
-<!--             <div id="popupContainer" ng-cloack>
-              <p class="insert">Open dialog box... maybe...</p>
-              <div>
-                <md-button class="md-primary md-raised" ng-click="showAdvanced($event)">Dialog Boxx!</md-button>
-              </div>
-            </div> -->
-        </md-content>
-      </md-tab>
-      <md-tab label="been there">
-        <md-content class="md-padding">
-<!--           <h1 class="md-headline">Been There</h1> -->
+          </md-content>
+        </md-tab>
+        <md-tab label="been there">
+          <md-content class="md-padding">
+            <!--           <h1 class="md-headline">Been There</h1> -->
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
-                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{visited:true}" layout-wrap>
-                <md-card-content class="restaurantTile">
-                  <h2>{{restaurant.name}}</h2>
-                  <img class="restaurantImg" src='{{restaurant.image}}'>
-                  <p><span style="font-weight:bold">Your Rating:</span> {{restaurant.rating}}</p>
-                  <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
-                </md-card-content>
-                <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button ng-click="seeReview()">See Review</md-button>
-                </div>
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{category:reviewed}" layout-wrap>
+                  <md-card-content class="restaurantTile">
+                    <h2>{{restaurant.name}}</h2>
+                    <img class="restaurantImg" src='{{restaurant.image}}'>
+                    <p><span style="font-weight:bold">Your Rating:</span> {{restaurant.rating}}</p>
+                    <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
+                  </md-card-content>
+                  <div class="md-actions" layout="row" layout-align="end center">
+                    <md-button ng-click="seeReview()">See Review</md-button>
+                  </div>
                 </md-card>
               </div>
             </div>
-        </md-content>
-      </md-tab>
-      <md-tab label="all">
-        <md-content class="md-padding">
-<!--           <h1 class="md-headline">All</h1> -->
+          </md-content>
+        </md-tab>
+        <md-tab label="all">
+          <md-content class="md-padding">
+            <!--           <h1 class="md-headline">All</h1> -->
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
                 <md-card class="cards" ng-repeat="restaurant in mainServerReply" layout-wrap>
-                <md-card-content class="restaurantTile">
-                  <h2>{{restaurant.name}}</h2>
-                  <img class="restaurantImg" src='{{restaurant.image}}'>
-                  <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
-                  <p><span style="font-weight:bold">Your Rating:{{restaurant.rating}}</p>
+                  <md-card-content class="restaurantTile">
+                    <h2>{{restaurant.name}}</h2>
+                    <img class="restaurantImg" src='{{restaurant.image}}'>
+                    <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
+                    <p><span style="font-weight:bold">Your Rating:{{restaurant.rating}}</p>
                   <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
-                </md-card-content>
-                <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button ng-click="seeReview()">Details</md-button>
-                </div>
+                  </md-card-content>
+                  <div class="md-actions" layout="row" layout-align="end center">
+                    <md-button ng-click="seeReview()">Details</md-button>
+                  </div>
                 </md-card>
               </div>
             </div>
-        </md-content>
-      </md-tab>
-      <md-tab label="search">
-        <md-content class="md-padding">
-<!--           <md-input-container>
+          </md-content>
+        </md-tab>
+        <md-tab label="search">
+          <md-content class="md-padding">
+            <!--           <md-input-container>
             <label>Restaurant: </label>
             <input ng-model="searchInput.term">
           </md-input-container>
@@ -83,44 +77,34 @@
             <input ng-model="searchInput.location">
           </md-input-container>
           <i class="material-icons" ng-click='submitSearch()'>search</i> -->
-          <h1>{{welcome}}</h1>
-          <md-input-container>
-            <label>Restaurant: </label>
-            <input ng-model="searchInput.term">
-          </md-input-container>
-          <md-input-container>
-            <label>City: </label>
-            <input ng-model="searchInput.location">
-          </md-input-container>
-          <i class="material-icons" ng-click='submitSearch()'>search</i>
-          <div id="searchResults" class="card" ng-cloak ng-model="serverReply">
-            <div class='md-padding' layout="horizontal">
-              <md-card class="cards" ng-repeat="restaurant in serverReply" layout-wrap>
-                <md-card-content class="restaurantTile">
-                  <h2>{{restaurant.name}}</h2>
-                  <img class="restaurantImg" src='{{restaurant.image}}'>
-                  <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
-                  <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}} </p>
-                </md-card-content>
-                <div class="md-actions" layout="row" layout-align="end center">
-                  <md-button class="addBtn" ng-model='userChoice' ng-click='addToRestaurants(restaurant)'>+ Wishlist</md-button>
-                </div>
-              </md-card>
+            <h1>{{welcome}}</h1>
+            <md-input-container>
+              <label>Restaurant: </label>
+              <input ng-model="searchInput.term">
+            </md-input-container>
+            <md-input-container>
+              <label>City: </label>
+              <input ng-model="searchInput.location">
+            </md-input-container>
+            <i class="material-icons" ng-click='submitSearch()'>search</i>
+            <div id="searchResults" class="card" ng-cloak ng-model="serverReply">
+              <div class='md-padding' layout="horizontal">
+                <md-card class="cards" ng-repeat="restaurant in serverReply" layout-wrap>
+                  <md-card-content class="restaurantTile">
+                    <h2>{{restaurant.name}}</h2>
+                    <img class="restaurantImg" src='{{restaurant.image}}'>
+                    <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
+                    <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0][0]}}, {{restaurant.categories[1]}} </p>
+                  </md-card-content>
+                  <div class="md-actions" layout="row" layout-align="end center">
+                    <md-button class="addBtn" ng-model='userChoice' ng-click='addToRestaurants(restaurant)'>+ Wishlist</md-button>
+                  </div>
+                </md-card>
+              </div>
             </div>
-          </div>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </md-content>
-</div>
-
-
-
-
-
-
-
-
-
-
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-content>
+  </div>
 </div>
