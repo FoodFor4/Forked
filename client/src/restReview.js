@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ($scope, $http, Services) {
+module.exports = function ($scope, $http, $mdDialog, Services) {
 
  $scope.message = 'Review Modal';
 
@@ -20,8 +20,11 @@ module.exports = function ($scope, $http, Services) {
    $scope.usersReview.user_rating = $scope.selectedRating;
    $scope.usersReview.review = $scope.textReview;
    $scope.usersReview.price = $scope.selectedPrice;
+
    console.log('submitReview contents: ', $scope.usersReview);
+   
    Services.submitReview( $scope.usersReview );
+   $mdDialog.hide();
  }
 
  $scope.getSelectedRating = function() {
@@ -46,11 +49,3 @@ module.exports = function ($scope, $http, Services) {
 
 };
 
-      // Review Table Schema:
-          // table.integer('user_id');
-          // table.integer('rest_id');
-          // table.foreign('user_id').references('users.user_id');
-          // table.foreign('rest_id').references('restaurants.rest_id');
-          // table.integer('user_rating');
-          // table.string('review', 140);
-          // table.string('price');

@@ -1,9 +1,5 @@
 'use strict';
 
-
-
-
-
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 
 module.exports = function($scope, $mdDialog, $mdMedia, Services) {
@@ -13,16 +9,14 @@ module.exports = function($scope, $mdDialog, $mdMedia, Services) {
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
   $scope.showAdvanced = function( ev ) {
-    var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
     
     console.log('firing showAdvanced');
     $mdDialog.show({
       controller: DialogController,
       templateUrl: './views/restReview.html',
-      parent: angular.element(document.body),
+      parent: angular.element(document.querySelector('#popupContainer')),
       targetEvent: ev,
       clickOutsideToClose: true,
-      fullscreen: useFullScreen
     })
     .then(function(answer) {
       $scope.status = "you said the information was " + answer + '.';
@@ -44,12 +38,12 @@ module.exports = function($scope, $mdDialog, $mdMedia, Services) {
     $scope.cancel = function() {
       $mdDialog.cancel();
     };
+
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
     };
   }
 // end modal attempt 2
-
 
 $scope.welcomeMain = 'Main Module';
 
@@ -58,22 +52,16 @@ $scope.welcomeMain = 'Main Module';
     location: 'Austin'
   }
 
-  // $scope.serverReply = [ $scope.Franklin, $scope.Perrys, $scope.Branklin ];
-
   $scope.alertChange = function(){
     console.log($scope.searchInput.restName);
   }
 
   $scope.submitSearch = function(){
     var restRequest = {
-      // search name entered...
       name: $scope.searchInput.term,
-      // default is Austin, but can change...
       city: $scope.searchInput.location
     }
     console.log('Submitted search criterion: ', restRequest);
-    //wishful programming...
-   // return userSearch( restRequest )();
   }
 
   // restSearch controller code
@@ -114,7 +102,6 @@ $scope.welcomeMain = 'Main Module';
     console.log("go to see existing review page for selected restaurant");
   }
 
-<<<<<<< HEAD
   // if ($scope.docCookies.getItem('sessionToken') !== null) {
   //    $scope.mainServerReply = [];
   //    Services.getList()
@@ -127,7 +114,6 @@ $scope.welcomeMain = 'Main Module';
   //   console.log("you're not logged in. dummy data loaded");
     $scope.mainServerReply = [$scope.Franklin,$scope.Perrys,$scope.Uchi,$scope.Tacodeli,$scope.SalvationPizza,$scope.GussWorldFamousFriedChicken,$scope.KerbeyLaneCafe,$scope.MattsFamousElRancho,$scope.PhoPlease ];
   // }
-
 
   //docCookies is a library that implements several methods for dealing with cookies
   $scope.docCookies = {
@@ -169,9 +155,6 @@ $scope.welcomeMain = 'Main Module';
       return aKeys;
     }
   };
-
-
-
 
 
 $scope.Franklin = {

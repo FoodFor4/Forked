@@ -127,3 +127,12 @@ h1{
 .dialogdemoBasicUsage div#status {
   color: #c60008;
 }
+
+#dialogContent_12{
+  width: 10%
+  height: 20%;
+}
+
+#popupContainer {
+  position: relative;
+}

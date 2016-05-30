@@ -1,10 +1,8 @@
 'use strict';
 
-
 module.exports = function($scope, $location, $window, Services) {
 
     $scope.welcomeLogin = 'Login Module';
-
 
     $scope.user = {};
 
@@ -29,10 +27,6 @@ module.exports = function($scope, $location, $window, Services) {
            console.error(error);
          });
     };
-
-
-
-
 
 }
 
