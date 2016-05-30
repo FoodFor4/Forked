@@ -2,7 +2,7 @@
 
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 
-module.exports = function($scope, $mdDialog, $mdMedia, Services) {
+module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services) {
 
   // modal attempt 2
   $scope.status = ' ';
@@ -23,7 +23,7 @@ module.exports = function($scope, $mdDialog, $mdMedia, Services) {
       }, function() {
         $scope.status = 'You cancelled the dialog.';
       });
-      
+
     $scope.watch(function() {
       return $mdMedia('xs') || $mdMedia('sm');
     }, function(wantsFullScreen) {
@@ -107,6 +107,12 @@ module.exports = function($scope, $mdDialog, $mdMedia, Services) {
     console.log("go to see existing review page for selected restaurant");
     Services.seeReview();
   }
+
+  $scope.openBottomSheet = function() {
+    $mdBottomSheet.show({
+      template: "<md-bottom-sheet>We're still working on this part...</md-bottom-sheet>"
+    });
+  };
 
   // << << << < HEAD
   // // if ($scope.docCookies.getItem('sessionToken') !== null) {
