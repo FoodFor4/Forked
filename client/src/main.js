@@ -114,21 +114,7 @@ module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services)
     });
   };
 
-
-  // if ($scope.docCookies.getItem('sessionToken') !== null) {
-  //    $scope.mainServerReply = [];
-  //    Services.getList()
-  //    .then (function( resp ) {
-  //      console.log('Array of restaurants received from database :', resp.data);
-  //       $scope.mainServerReply = resp.data;
-  //       return resp.data;
-  //     });
-  // } else {
-  //   console.log("you're not logged in. dummy data loaded");
-  $scope.mainServerReply = [$scope.Franklin, $scope.Perrys, $scope.Uchi, $scope.Tacodeli, $scope.SalvationPizza, $scope.GussWorldFamousFriedChicken, $scope.KerbeyLaneCafe, $scope.MattsFamousElRancho, $scope.PhoPlease];
-  // }
-
-  docCookies is a library that implements several methods for dealing with cookies
+  //docCookies is a library that implements several methods for dealing with cookies
   $scope.docCookies = {
     getItem: function(sKey) {
       if (!sKey) {
