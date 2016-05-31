@@ -13,6 +13,7 @@ module.exports = function($scope, $http, $mdDialog, Services) {
     user_rating: '',
     review: '',
     rest_id: null,
+    user_id: null,
     price: ''
   };
 
@@ -43,6 +44,7 @@ module.exports = function($scope, $http, $mdDialog, Services) {
     }
   }
 
+  //not implemented
   $scope.showReview = function() {
     console.log($scope.usersReview);
   }

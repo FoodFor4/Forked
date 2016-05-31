@@ -107,6 +107,6 @@ module.exports = function($http) {
     getList: getList,
     logIn: logIn,
     signUp: signUp,
-    seeReview: seeReview,
+    seeReview: seeReview
   }
 }
