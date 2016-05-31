@@ -6,12 +6,19 @@
 // });
 
 var knex = require('knex')({
-  client: 'sqlite3',
-  useNullAsDefault: true,
+  client: 'pg',
   connection: {
-    filename: './test.db'
+    host     : 'localhost',
+    port     :  5432,
+    user     : 'postgres',
+    password : 'postgres',
+    database : 'forked'
+  },
+  pool: {
+    min: 2,
+    max: 10
   }
-})
+});
 
 
 module.exports = knex;
@@ -43,7 +50,7 @@ knex.ensureSchema = function () {
           table.string('phone', 15);
           table.string('categories');
           table.string('image');
-          table.string('yelp_rating');          
+          table.string('yelp_rating');
         }).then(function (table) {
           console.log("created restaurants table")
         })
@@ -97,4 +104,3 @@ knex.ensureSchema = function () {
 
   ])
 }
-
