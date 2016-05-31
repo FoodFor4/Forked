@@ -4,7 +4,7 @@ var db = require('../db');
 var Restaurants = module.exports
 
 Restaurants.findOrCreate = function (selectedRestaurantData, userId) {
-  
+
   var restaurantInfo = Object.assign({}, selectedRestaurantData);
 
   console.log("created or finding restaurant with data: ", restaurantInfo, userId)
