@@ -12,7 +12,7 @@ var knex = require('knex')({
     port     :  5432,
     user     : 'postgres',
     password : 'postgres',
-    database : 'test'
+    database : 'forked'
   },
   pool: {
     min: 2,
