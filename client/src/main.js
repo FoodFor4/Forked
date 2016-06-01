@@ -2,7 +2,7 @@
 
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 
-module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services) {
+module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet, Services) {
 
   $scope.status = ' ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
