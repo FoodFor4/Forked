@@ -1,19 +1,19 @@
-var browserify = require('browserify-middleware')
+var browserify = require('browserify-middleware');
 var express = require('express');
 var app = express();
-var db = require('./db')
+var db = require('./db');
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var yelpApi = require('./routes/yelp')
+var yelpApi = require('./routes/yelp');
 //var facebookLogin = require('./routes/facebook')
-var logout = require('./routes/logout')
-var login = require('./routes/login'),
-	signup = require('./routes/signup');
+var logout = require('./routes/logout');
+var login = require('./routes/login');
+var	signup = require('./routes/signup');
 
-var reviewRoutes = require('./api_routes/reviews')
-var restRoutes = require('./api_routes/restaurants')
+var reviewRoutes = require('./api_routes/reviews');
+var restRoutes = require('./api_routes/restaurants');
 //***************Facebook Authentication Routing********************
 var passport = require('passport')
   , FacebookStrategy = require('passport-facebook').Strategy;
@@ -47,6 +47,7 @@ app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/login' }));
 //******************************************************************
+
 app.use(express.static('client/'));
 
 //browersify which injects all dependencies into index.html
@@ -69,7 +70,7 @@ app.use('/auth/', logout);
 var Users = require('./models/users');
 app.use(function(req, res, next) {
 	console.log(req.url);
-	console.log(req.cookies)
+	console.log(req.cookies);
 	// next();
 	if(req.cookies.sessionToken) {
 		Users.findSessionByToken(req.cookies.sessionToken).then(function(data) {
@@ -93,7 +94,7 @@ app.use(function(req, res, next) {
 		//Redirect a wayward user to / on the server, and /#/login on the client side routing.
 		res.redirect('/');
 	}
-})
+});
 
 
 //route to your index.html
