@@ -83,6 +83,10 @@ module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services)
       template: "<md-bottom-sheet>Under Construction... (╯°□°)╯︵ ┻━┻</md-bottom-sheet>"
     });
   };
+  $scope.goto = function(path) {
+    console.log("goto worked");
+    $location.path(path)
+  };
 
   //docCookies is a library that implements several methods for dealing with cookies
   $scope.docCookies = {
