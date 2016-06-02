@@ -14,6 +14,8 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
   $scope.serverReply;
   $scope.toAdd;
 
+
+
   $scope.showAdvanced = function(ev) {
 
     console.log('firing showAdvanced');
@@ -25,6 +27,11 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
         clickOutsideToClose: true
       })
   };
+  
+  $scope.goto = function(path) {
+    console.log("goto worked");
+    $location.path(path)
+  }
 
   function DialogController($scope, $mdDialog) {
     $scope.hide = function() {
