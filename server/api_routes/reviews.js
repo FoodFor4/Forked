@@ -26,7 +26,7 @@ routes.get('/', function(req, res) {
 
 routes.post('/', bodyParser.json(), function(req, res) {
 	var args = req.body;
-
+console.log(req.body);
 	args.user_id = req.sessionInfo.user_id;
 
 	reviews.addNew(args).then(function(data) {
