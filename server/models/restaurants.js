@@ -1,7 +1,7 @@
 var db = require('../db');
 
 
-var Restaurants = module.exports
+var Restaurants = module.exports;
 
 //
 // Attempts to find selected restaurant in the restaurants db table. 
@@ -11,7 +11,7 @@ Restaurants.findOrCreate = function (selectedRestaurantData, userId) {
 
   var restaurantInfo = Object.assign({}, selectedRestaurantData);
 
-  console.log("created or finding restaurant with data: ", restaurantInfo, userId)
+  console.log("created or finding restaurant with data: ", restaurantInfo, userId);
 
   return Restaurants.find({
     yelp_id: restaurantInfo.yelp_id
@@ -36,18 +36,18 @@ Restaurants.findOrCreate = function (selectedRestaurantData, userId) {
             rest_id: result[0],
             user_id: userId,
             category: 'wishlist'
-          }
+          };
           console.log('Bucket object', bucket);
 
           db('buckets').insert(bucket).then(function (data) {
             console.log("Bucket insert results", data)
-          })
+          });
 
           return restaurantInfo;
         })
     }
   })
-}
+};
 
 Restaurants.find = function (restaurantData) {
   var restaurantInfo = Object.assign({}, restaurantData);
@@ -61,7 +61,7 @@ Restaurants.find = function (restaurantData) {
       console.log('find called on', restaurantInfo, 'returning', result);
       return result;
     })
-}
+};
 
 Restaurants.findAllAttachedToUserId = function (userId) {
   return db('buckets')
@@ -74,4 +74,4 @@ Restaurants.findAllAttachedToUserId = function (userId) {
       console.log("FindAllAttachedToUserId data =", data);
       return data;
     });
-}
+};

@@ -1,18 +1,18 @@
 var router = require('express').Router();
-var Users = require('../models/users')
+var Users = require('../models/users');
 
-var bcrypt = require('bcrypt-nodejs')
+var bcrypt = require('bcrypt-nodejs');
 
 router.post('/logout/', function(req, res) {
 
   console.log("logout request", req.body.cookie);
   Users.deleteSessionToken(req.body.sessionToken).then(function(data){
-    res.clearCookie('sessionToken');
-    res.status(200).send("success logout");
+   res.status(200).send("success logout").clearCookie('sessionToken',req.body.sessionToken);
+       //'sessionToken');
   })
   .catch(function(err){
     res.status(500).send("fail logout", err);
-  })
+  });
 
 
 	//Create a user if it doesn't exist

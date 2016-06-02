@@ -24,7 +24,7 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
         targetEvent: ev,
         clickOutsideToClose: true
       })
-  }
+  };
 
   function DialogController($scope, $mdDialog) {
     $scope.hide = function() {
@@ -36,29 +36,29 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
     var restRequest = {
       name: $scope.searchInput.term,
       city: $scope.searchInput.location
-    }
+    };
     console.log('Submitted search criterion: ', restRequest);
-  }
+  };
 
   //value bound to Restaurant/City input on restSearch.html
   $scope.searchInput = {
     term: '',
     location: 'Austin'
-  }
+  };
 
   $scope.submitSearch = function() {
     var restRequest = {
       term: $scope.searchInput.term,
       location: $scope.searchInput.location
-    }
+    };
 
     Services.yelpSearchResults(restRequest)
       .then(function(resp) {
         $scope.serverReply = resp;
         console.log('Populating page with yelp results: ', resp);
-      })
+      });
     console.log('Submitted search criterion: ', restRequest);
-  }
+  };
 
   $scope.addToRestaurants = function(restaurant) {
       console.log('addToRestaurants fired:', restaurant);
@@ -67,16 +67,16 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
           console.log("refreshing main page after add", resp);
           $scope.init();
       });
-  }
+  };
 
   $scope.writeReview = function() {
     console.log("go to create a review page for selected restaurant");
-  }
+  };
 
   $scope.seeReview = function() {
     console.log("go to see existing review page for selected restaurant");
     Services.seeReview();
-  }
+  };
 
   $scope.openBottomSheet = function() {
     $mdBottomSheet.show({
@@ -152,4 +152,4 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
 
   $scope.init();
 
-}
+};

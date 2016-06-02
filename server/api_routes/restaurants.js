@@ -1,7 +1,7 @@
-var express =  require('express')
+var express =  require('express');
 var url = require('url');
-var bodyParser = require('body-parser')
-var restaurants = require('../models/restaurants')
+var bodyParser = require('body-parser');
+var restaurants = require('../models/restaurants');
 
 //Implicitly attached to /restaurants/
 var routes = express.Router();
@@ -19,7 +19,7 @@ routes.get('/', function(req, res) {
 		console.log('restaurants get err', err);
 		res.status(500).send('Server Error');
 	})
-})
+});
 
 routes.get('/all/', function(req, res) {
 	restaurants.findAllAttachedToUserId(req.sessionInfo.user_id).then(function(data) {
@@ -27,7 +27,7 @@ routes.get('/all/', function(req, res) {
 	}).catch(function(err) {
 		res.status(500).send('Server Error');
 	})
-})
+});
 
 routes.post('/', bodyParser.json(), function(req, res) {
 	restaurants.findOrCreate(req.body, req.sessionInfo.user_id).then(function(data) {
@@ -37,6 +37,6 @@ routes.post('/', bodyParser.json(), function(req, res) {
 		console.log('restaurants post err', err);
 		res.status(500).send('Server Error');
 	})
-})
+});
 
 module.exports = routes;

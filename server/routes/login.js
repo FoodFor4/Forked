@@ -1,7 +1,7 @@
 var router = require('express').Router();
-var Users = require('../models/users')
+var Users = require('../models/users');
 
-var bcrypt = require('bcrypt-nodejs')
+var bcrypt = require('bcrypt-nodejs');
 
 router.post('/login/', function(req, res) {
 	Users.findByName(req.body.username).then(function(data) {
@@ -25,6 +25,6 @@ router.post('/login/', function(req, res) {
 	}).catch(function(err) {
 		console.log('Login Error', err);
 	})
-})
+});
 
 module.exports = router;

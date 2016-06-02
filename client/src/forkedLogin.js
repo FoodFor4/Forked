@@ -28,4 +28,4 @@ module.exports = function($scope, $location, $window, Services) {
       });
   };
 
-}
+};
