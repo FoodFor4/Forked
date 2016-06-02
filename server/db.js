@@ -24,42 +24,13 @@ var knex = require('knex')({
 
 module.exports = knex;
 
-var facebooktoggle = true;
+
 
 knex.ensureSchema = function () {
     return Promise.all([
         knex.schema.hasTable('users').then(function (exists) {
 
-            if (facebooktoggle) {
-                knex.schema.dropTable('sessions').then(function () {
-                    console.log('sessions dropped');
-                    knex.schema.dropTable('buckets');
-                }).then(function () {
-                    console.log('buckets dropped');
-                    knex.schema.dropTable('reviews');
-                }).then(function () {
-                    console.log('reviews dropped');
-
-                }).then(function () {
-
-                    knex.schema.dropTable('users').then(function () {
-                        console.log("created facebook users table");
-                    }).then(function () {
-                        knex.schema.createTable('users', function (table) {
-                            table.integer('user_id').primary();
-                            table.string('user_name');
-                            table.string('hashed_password');
-                            //table.string('fb_name');
-                            //table.string('fb_id');
-                        }).then(function (table) {
-                            console.log("created users table")
-                        })
-                    });
-
-                })
-            }
-
-            if (!exists) {
+               if (!exists) {
                 knex.schema.createTable('users', function (table) {
                     table.increments('user_id').primary();
                     table.string('user_name');
@@ -155,9 +126,8 @@ knex.ensureSchema = function () {
             }
         })
 
-<<<<<<< 71b2030989088d27e8abeeece40e70c0b4bb3330
-  ])
-=======
+
+
     ])
->>>>>>> facebook database changes 2
+
 };
