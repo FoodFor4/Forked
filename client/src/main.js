@@ -13,9 +13,10 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
   }
   $scope.serverReply;
   $scope.toAdd;
+  $scope.currentRestReview;
 
-  $scope.showAdvanced = function(ev) {
-
+  $scope.showAdvanced = function(ev, restaurant) {
+    Services.setCurrentRestReview(restaurant);
     console.log('firing showAdvanced');
     $mdDialog.show({
         controller: DialogController,

@@ -2,7 +2,7 @@
 // Services
 
 module.exports = function($http) {
-
+  var curRestReview = {};
   var logIn = function(userObj) {
     console.log('logIn firing POST...');
     return $http({
@@ -121,6 +121,14 @@ module.exports = function($http) {
     })
   }
 
+  var getCurrentRestReview = function() {
+    return curRestReview;
+  }
+
+  var setCurrentRestReview = function(restaurant) {
+    curRestReview = restaurant;
+  }
+
   return {
     yelpSearchResults: yelpSearchResults,
     yelpSearchAdd: yelpSearchAdd,
@@ -130,6 +138,8 @@ module.exports = function($http) {
     getList: getList,
     logIn: logIn,
     signUp: signUp,
-    seeReview: seeReview
+    seeReview: seeReview,
+    getCurrentRestReview: getCurrentRestReview,
+    setCurrentRestReview: setCurrentRestReview
   }
 }
