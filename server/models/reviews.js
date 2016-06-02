@@ -44,8 +44,8 @@ Reviews.getReviews = function (rest_id) {
 // This function is broken = will work on this Matt.
 Reviews.getUserReview = function (user_id, rest_id) {
   return db('reviews').where({
-      user_id,
-      rest_id
+    user_id:  user_id,
+    rest_id:  rest_id
     })
     .then(function (rows) {
       console.log('getUserReview called on ', user_id, rest_id, 'returning', rows);
