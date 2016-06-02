@@ -14,7 +14,7 @@ var client = yelp.createClient({
   // httpClients: {
   //   maxSockets: 10
   // }
-})
+});
 
 route.get('/', function(req, res) {
   var queryData = url.parse(req.url, true).query;

@@ -12,8 +12,8 @@ module.exports = function($scope, $http, $mdDialog, Services) {
   $scope.usersReview = {
     user_rating: '',
     review: '',
-    rest_id: null,
-    user_id: null,
+    rest_id: Services.getCurrentRestReview().rest_id,
+    user_id: Services.getCurrentRestReview().user_id,
     price: ''
   };
 
@@ -26,7 +26,7 @@ module.exports = function($scope, $http, $mdDialog, Services) {
 
     Services.submitReview($scope.usersReview);
     $mdDialog.hide();
-  }
+  };
 
   $scope.getSelectedRating = function() {
     if ($scope.selectedRating !== undefined) {
@@ -34,7 +34,7 @@ module.exports = function($scope, $http, $mdDialog, Services) {
     } else {
       return "Select rating";
     }
-  }
+  };
 
   $scope.getSelectedPrice = function() {
     if ($scope.selectedPrice !== undefined) {
@@ -42,7 +42,7 @@ module.exports = function($scope, $http, $mdDialog, Services) {
     } else {
       return "Select price range";
     }
-  }
+  };
 
   //not implemented
   $scope.showReview = function() {

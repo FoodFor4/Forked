@@ -2,7 +2,7 @@
 // Services
 
 module.exports = function($http) {
-
+  var curRestReview = {};
   var logIn = function(userObj) {
     console.log('logIn firing POST...');
     return $http({
@@ -42,7 +42,7 @@ module.exports = function($http) {
       });
   }
 
-  var getList = function(query) {
+  var getList = function() {
     return $http({
         method: 'GET',
         url: '/restaurants/all/'
@@ -66,13 +66,34 @@ module.exports = function($http) {
       .then(function(resp) {
         console.log('yelp serach add response: ', resp);
       })
-      .then(function(){
-        alert('Restaurant added to your wish list!');
+  }
+
+  var yelpBeenThere = function(restaurantObj) {
+    console.log('yelpBeenThere firing...');
+    return $http({
+        method: 'POST',
+        url: '/restaurants/been/',
+        data: restaurantObj
+      })
+      .then(function(resp) {
+        console.log('switch to been there response: ', resp);
+      })
+  }
+
+  var yelpWishList = function(restaurantObj) {
+    console.log('yelpWishList firing...');
+    return $http({
+        method: 'POST',
+        url: '/restaurants/wishlist/',
+        data: restaurantObj
+      })
+      .then(function(resp) {
+        console.log('switch to wishlist response: ', resp);
       })
   }
 
   var submitReview = function(userReview) {
-    console.log('addReview firing...');
+    console.log('addReview firing...', userReview);
     return $http({
         method: 'POST',
         url: '/reviews/',
@@ -100,13 +121,25 @@ module.exports = function($http) {
     })
   }
 
+  var getCurrentRestReview = function() {
+    return curRestReview;
+  }
+
+  var setCurrentRestReview = function(restaurant) {
+    curRestReview = restaurant;
+  }
+
   return {
     yelpSearchResults: yelpSearchResults,
     yelpSearchAdd: yelpSearchAdd,
+    yelpBeenThere: yelpBeenThere,
+    yelpWishList: yelpWishList,
     submitReview: submitReview,
     getList: getList,
     logIn: logIn,
     signUp: signUp,
-    seeReview: seeReview
+    seeReview: seeReview,
+    getCurrentRestReview: getCurrentRestReview,
+    setCurrentRestReview: setCurrentRestReview
   }
 }

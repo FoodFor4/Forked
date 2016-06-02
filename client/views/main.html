@@ -2,6 +2,8 @@
 </div>
 <div class="jumbotron" ng-controller="MainCtrl">
   <img id="logo" src="../assets/forked-logo-with-fork-exp.jpg">
+  <md-button ng-click="goto('/login')">Login</md-button>
+  <md-button ng-click="goto('/login')">Logout</md-button>
   <div ng-cloak>
     <md-content>
       <md-tabs md-dynamic-height md-border-bottom>
@@ -9,14 +11,15 @@
           <md-content class="md-padding">
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
-                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{category:wishlist}" layout-wrap>
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{category:'wishlist'}" layout-wrap>
                   <md-card-content class="restaurantTile">
                     <h2>{{restaurant.name}}</h2>
                     <img class="restaurantImg" src='{{restaurant.image}}'>
                     <p><span style="font-weight:bold">Yelp Rating:</span> {{restaurant.yelp_rating}}</p>
 <!--                     <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0]}}, {{restaurant.categories[1]}}</p>
- -->                    <div class="md-actions" layout="row" layout-align="center">
-                      <md-button ng-click="showAdvanced($event)">Review</md-button>
+ -->                <div class="md-actions" layout="row" layout-align="center">
+                      <md-button class='reviewBtn' ng-click="showAdvanced($event, restaurant)">Review</md-button>
+                      <md-button class='addBtn' ng-click="addToBeenThere(restaurant)">+ Been there</md-button>
                     </div>
                   </md-card-content>
                 </md-card>
@@ -29,7 +32,7 @@
             <md-button ng-click="openBottomSheet()">Future Reviews</md-button>
             <div id="lists" class="card" ng-cloak ng-model="mainServerReply">
               <div class='md-padding' layout="horizontal">
-                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{category:!wishlist}" layout-wrap>
+                <md-card class="cards" ng-repeat="restaurant in mainServerReply | filter:{category:'been'}" layout-wrap>
                   <md-card-content class="restaurantTile">
                     <h2>{{restaurant.name}}</h2>
                     <img class="restaurantImg" src='{{restaurant.image}}'>
@@ -38,6 +41,7 @@
  -->                  </md-card-content>
                   <div class="md-actions" layout="row" layout-align="end center">
                     <md-button ng-click="openBottomSheet()">See Review</md-button>
+                    <md-button class='addBtn' ng-click="addToWishList(restaurant)">+ Wishlist</md-button>
                   </div>
                 </md-card>
               </div>
@@ -86,7 +90,8 @@
                     <p><span style="font-weight:bold">Category:</span> {{restaurant.categories[0][0]}}, {{restaurant.categories[1]}} </p>
                   </md-card-content>
                   <div class="md-actions" layout="row" layout-align="end center">
-                    <md-button class="addBtn" ng-model='userChoice' ng-click='addToRestaurants(restaurant)'>+ Wishlist</md-button>
+                    <md-button class="addBtn" ng-model='userChoice' ng-click='addToRestaurants(restaurant)' ng-show='!restaurant.addedToWishList' >+ Wishlist</md-button>
+                    <md-button class="reviewBtn" ng-show='restaurant.addedToWishList' >Added!</md-button>
                   </div>
                 </md-card>
               </div>

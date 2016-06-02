@@ -1,12 +1,12 @@
 var router = require('express').Router();
-var Users = require('../models/users')
+var Users = require('../models/users');
 
-var bcrypt = require('bcrypt-nodejs')
+var bcrypt = require('bcrypt-nodejs');
 
 router.post('/signup/', function(req, res) {
 	//Create a user if it doesn't exist
 	//Or error and inform the user that the username is taken, or that some validation failed.
-	Users.findByName(req.body.name).then(function(data) {
+	Users.findByName(req.body.username).then(function(data) {
 		if(data) {
 			res.status(400).send('Username taken.'); //User error
 		}
