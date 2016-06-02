@@ -66,9 +66,9 @@ module.exports = function($http) {
       .then(function(resp) {
         console.log('yelp serach add response: ', resp);
       })
-      .then(function(){
-        alert('Restaurant added to your wish list!');
-      })
+      // .then(function(){
+      //   alert('Restaurant added to your wish list!');
+      // })
   }
 
   var submitReview = function(userReview) {

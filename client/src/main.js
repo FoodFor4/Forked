@@ -2,7 +2,7 @@
 
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 
-module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services) {
+module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet, Services) {
 
   $scope.status = ' ';
   $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
@@ -14,6 +14,8 @@ module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services)
   $scope.serverReply;
   $scope.toAdd;
 
+
+
   $scope.showAdvanced = function(ev) {
 
     console.log('firing showAdvanced');
@@ -24,6 +26,11 @@ module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services)
         targetEvent: ev,
         clickOutsideToClose: true
       })
+  };
+  
+  $scope.goto = function(path) {
+    console.log("goto worked");
+    $location.path(path)
   }
 
   function DialogController($scope, $mdDialog) {
@@ -36,29 +43,29 @@ module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services)
     var restRequest = {
       name: $scope.searchInput.term,
       city: $scope.searchInput.location
-    }
+    };
     console.log('Submitted search criterion: ', restRequest);
-  }
+  };
 
   //value bound to Restaurant/City input on restSearch.html
   $scope.searchInput = {
     term: '',
     location: 'Austin'
-  }
+  };
 
   $scope.submitSearch = function() {
     var restRequest = {
       term: $scope.searchInput.term,
       location: $scope.searchInput.location
-    }
+    };
 
     Services.yelpSearchResults(restRequest)
       .then(function(resp) {
         $scope.serverReply = resp;
         console.log('Populating page with yelp results: ', resp);
-      })
+      });
     console.log('Submitted search criterion: ', restRequest);
-  }
+  };
 
   $scope.addToRestaurants = function(restaurant) {
       console.log('addToRestaurants fired:', restaurant);
@@ -67,16 +74,16 @@ module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services)
           console.log("refreshing main page after add", resp);
           $scope.init();
       });
-  }
+  };
 
   $scope.writeReview = function() {
     console.log("go to create a review page for selected restaurant");
-  }
+  };
 
   $scope.seeReview = function() {
     console.log("go to see existing review page for selected restaurant");
     Services.seeReview();
-  }
+  };
 
   $scope.openBottomSheet = function() {
     $mdBottomSheet.show({
@@ -152,4 +159,4 @@ module.exports = function($scope, $mdDialog, $mdMedia, $mdBottomSheet, Services)
 
   $scope.init();
 
-}
+};

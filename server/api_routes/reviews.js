@@ -1,11 +1,11 @@
-var express =  require('express')
-var reviews = require('../models/reviews')
+var express =  require('express');
+var reviews = require('../models/reviews');
 
 //Implicitly attached to /reviews/
 var routes = express.Router();
 
 var url = require('url');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 
 //???
@@ -22,7 +22,7 @@ routes.get('/', function(req, res) {
 			console.log('Reviews get err', err);
 			res.status(500).send('Server Error.');
 		})
-})
+});
 
 routes.post('/', bodyParser.json(), function(req, res) {
 	var args = req.body;
@@ -35,6 +35,6 @@ routes.post('/', bodyParser.json(), function(req, res) {
 		console.log('Reviews post err', err);
 		res.status(500).send("Server Error.");
 	})
-})
+});
 
 module.exports = routes;
