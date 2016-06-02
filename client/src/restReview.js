@@ -12,8 +12,8 @@ module.exports = function($scope, $http, $mdDialog, Services) {
   $scope.usersReview = {
     user_rating: '',
     review: '',
-    rest_id: null,
-    user_id: null,
+    rest_id: Services.getCurrentRestReview().rest_id,
+    user_id: Services.getCurrentRestReview().user_id,
     price: ''
   };
 
