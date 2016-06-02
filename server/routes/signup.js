@@ -1,7 +1,7 @@
 var router = require('express').Router();
-var Users = require('../models/users')
+var Users = require('../models/users');
 
-var bcrypt = require('bcrypt-nodejs')
+var bcrypt = require('bcrypt-nodejs');
 
 router.post('/signup/', function(req, res) {
 	//Create a user if it doesn't exist

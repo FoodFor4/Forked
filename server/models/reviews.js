@@ -15,7 +15,7 @@ Reviews.addNew = function (restaurantReviewData) {
 
   var reviewInfo = Object.assign({}, restaurantReviewData);
 
-  console.log("created review with data: ", reviewInfo)
+  console.log("created review with data: ", reviewInfo);
 
   return db('reviews').insert(reviewInfo)
     .then(function (result) {
@@ -30,7 +30,7 @@ Reviews.addNew = function (restaurantReviewData) {
         return data;
       });
     })
-}
+};
 
 Reviews.getReviews = function (rest_id) {
   return db('reviews').where({
@@ -40,8 +40,8 @@ Reviews.getReviews = function (rest_id) {
       console.log('getReviews called on ', rest_id, 'returning', rows);
       return rows
     })
-}
-
+};
+// This function is broken = will work on this Matt.
 Reviews.getUserReview = function (user_id, rest_id) {
   return db('reviews').where({
       user_id,
@@ -51,4 +51,4 @@ Reviews.getUserReview = function (user_id, rest_id) {
       console.log('getUserReview called on ', user_id, rest_id, 'returning', rows);
       return rows;
     })
-}
+};
