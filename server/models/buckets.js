@@ -1,5 +1,8 @@
-var db = require('../db');
+//
+// Maher - this file doesn't seem to be used for anything at the moment
+//
 
+var db = require('../db');
 
 var Buckets = module.exports
 
