@@ -25,7 +25,7 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
         clickOutsideToClose: true
       })
   };
-  
+
   $scope.goto = function(path) {
     console.log("goto worked");
     $location.path(path)
@@ -63,9 +63,9 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
 
   $scope.addToRestaurants = function(restaurant) {
       console.log('addToRestaurants fired:', restaurant);
-      
+
       //TODO MMD: add backend piping to deal with this property
-      delete restaurant.addedToWishList; 
+      delete restaurant.addedToWishList;
       Services.yelpSearchAdd(restaurant)
         .then(function(resp) {
           console.log("refreshing main page after add", resp);
@@ -172,8 +172,6 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
           $scope.mainServerReply = resp;
           return resp;
         });
-    } else {
-      alert("you're not logged in");
     }
   };
 

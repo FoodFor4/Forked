@@ -66,9 +66,6 @@ module.exports = function($http) {
       .then(function(resp) {
         console.log('yelp serach add response: ', resp);
       })
-      // .then(function(){
-      //   alert('Restaurant added to your wish list!');
-      // })
   }
 
   var yelpBeenThere = function(restaurantObj) {
@@ -81,9 +78,6 @@ module.exports = function($http) {
       .then(function(resp) {
         console.log('switch to been there response: ', resp);
       })
-      .then(function(){
-        alert('Restaurant added to your been there list!');
-      })
   }
 
   var yelpWishList = function(restaurantObj) {
@@ -95,9 +89,6 @@ module.exports = function($http) {
       })
       .then(function(resp) {
         console.log('switch to wishlist response: ', resp);
-      })
-      .then(function(){
-        alert('Restaurant added to your wishlist!');
       })
   }
 
