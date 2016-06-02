@@ -103,6 +103,12 @@ h1 {
   font-weight: bold;
 }
 
+.reviewBtn {
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+}
+
 .infoBtn {
   background-color: #2380E2;
   color: white;

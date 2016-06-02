@@ -14,8 +14,6 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
   $scope.serverReply;
   $scope.toAdd;
 
-
-
   $scope.showAdvanced = function(ev) {
 
     console.log('firing showAdvanced');
@@ -39,13 +37,6 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
     };
   }
 
-  $scope.submitSearch = function() {
-    var restRequest = {
-      name: $scope.searchInput.term,
-      city: $scope.searchInput.location
-    };
-    console.log('Submitted search criterion: ', restRequest);
-  };
 
   //value bound to Restaurant/City input on restSearch.html
   $scope.searchInput = {
@@ -61,17 +52,42 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
 
     Services.yelpSearchResults(restRequest)
       .then(function(resp) {
-        $scope.serverReply = resp;
-        console.log('Populating page with yelp results: ', resp);
+        $scope.serverReply = resp.map(function(rest) {
+          rest['addedToWishList'] = false;
+          return rest;
+        })
+        console.log('Populating page with yelp results: ', $scope.serverReply);
       });
     console.log('Submitted search criterion: ', restRequest);
   };
 
   $scope.addToRestaurants = function(restaurant) {
       console.log('addToRestaurants fired:', restaurant);
+      
+      //TODO MMD: add backend piping to deal with this property
+      delete restaurant.addedToWishList; 
       Services.yelpSearchAdd(restaurant)
         .then(function(resp) {
           console.log("refreshing main page after add", resp);
+          restaurant.addedToWishList = true;
+          $scope.init();
+      });
+  }
+
+  $scope.addToBeenThere = function(restaurant) {
+      console.log('addToBeenThere fired:', restaurant);
+      Services.yelpBeenThere(restaurant)
+        .then(function(resp) {
+          console.log("refreshing main page after been there add", resp);
+          $scope.init();
+      });
+  }
+
+  $scope.addToWishList = function(restaurant) {
+      console.log('addToBeenThere fired:', restaurant);
+      Services.yelpWishList(restaurant)
+        .then(function(resp) {
+          console.log("refreshing main page after wishlist add", resp);
           $scope.init();
       });
   };
@@ -89,6 +105,10 @@ module.exports = function($scope, $location, $mdDialog, $mdMedia, $mdBottomSheet
     $mdBottomSheet.show({
       template: "<md-bottom-sheet>Under Construction... (╯°□°)╯︵ ┻━┻</md-bottom-sheet>"
     });
+  };
+  $scope.goto = function(path) {
+    console.log("goto worked");
+    $location.path(path)
   };
 
   //docCookies is a library that implements several methods for dealing with cookies

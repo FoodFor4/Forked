@@ -42,7 +42,7 @@ module.exports = function($http) {
       });
   }
 
-  var getList = function(query) {
+  var getList = function() {
     return $http({
         method: 'GET',
         url: '/restaurants/all/'
@@ -71,8 +71,38 @@ module.exports = function($http) {
       // })
   }
 
+  var yelpBeenThere = function(restaurantObj) {
+    console.log('yelpBeenThere firing...');
+    return $http({
+        method: 'POST',
+        url: '/restaurants/been/',
+        data: restaurantObj
+      })
+      .then(function(resp) {
+        console.log('switch to been there response: ', resp);
+      })
+      .then(function(){
+        alert('Restaurant added to your been there list!');
+      })
+  }
+
+  var yelpWishList = function(restaurantObj) {
+    console.log('yelpWishList firing...');
+    return $http({
+        method: 'POST',
+        url: '/restaurants/wishlist/',
+        data: restaurantObj
+      })
+      .then(function(resp) {
+        console.log('switch to wishlist response: ', resp);
+      })
+      .then(function(){
+        alert('Restaurant added to your wishlist!');
+      })
+  }
+
   var submitReview = function(userReview) {
-    console.log('addReview firing...');
+    console.log('addReview firing...', userReview);
     return $http({
         method: 'POST',
         url: '/reviews/',
@@ -103,6 +133,8 @@ module.exports = function($http) {
   return {
     yelpSearchResults: yelpSearchResults,
     yelpSearchAdd: yelpSearchAdd,
+    yelpBeenThere: yelpBeenThere,
+    yelpWishList: yelpWishList,
     submitReview: submitReview,
     getList: getList,
     logIn: logIn,
