@@ -42,7 +42,6 @@ Restaurants.findOrCreate = function (selectedRestaurantData, userId) {
           db('buckets').insert(bucket).then(function (data) {
             console.log("Bucket insert results", data)
           });
-
           return restaurantInfo;
         })
     }

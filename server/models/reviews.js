@@ -1,7 +1,7 @@
 var db = require('../db');
 
 
-var Reviews = module.exports
+var Reviews = module.exports;
 
 // restaurantReviewData = {
 // 	user_id: user_id,
