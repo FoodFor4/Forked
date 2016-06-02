@@ -11,8 +11,8 @@ var knex = require('knex')({
     host     : 'localhost',
     port     :  5432,
     user     : 'postgres',
-    password : 'postgres',
-    database : 'forked'
+    password : 'abc123',
+    database : 'test'
   },
   pool: {
     min: 2,
@@ -29,11 +29,11 @@ knex.ensureSchema = function () {
     knex.schema.hasTable('users').then(function (exists) {
       if(!exists) {
         knex.schema.createTable('users', function(table) {
-          table.string('user_id').primary();
-          table.string('display_name');
-          // table.string('hashed_password');
+          table.increments('user_id').primary();
+          table.string('user_name');
+          table.string('hashed_password');
           //table.string('fb_name');
-          // table.string('fb_id');
+          //table.string('fb_id');
         }).then(function (table) {
           console.log("created users table")
         })
