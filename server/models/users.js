@@ -51,3 +51,7 @@ User.findSessionByToken = function (token) {
     return data[0];
   })
 }
+
+User.deleteSessionToken = function(token){
+  return db('sessions').where({sessionToken: token}).del();
+}
