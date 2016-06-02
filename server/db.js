@@ -126,8 +126,6 @@ knex.ensureSchema = function () {
             }
         })
 
-
-
     ])
 
 };
